@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ShellComponent } from './shell/shell.component';
@@ -14,26 +15,38 @@ import { TelefonosutilesComponent } from '../telefonosutiles/telefonosutiles.com
 import { ArbitrosmedicosComponent } from '../arbitrosmedicos/arbitrosmedicos.component';
 import { GastomicroComponent } from '../gastomicro/gastomicro.component';
 import { IngresopartidoComponent } from '../ingresopartido/ingresopartido.component';
+import * as FusionCharts from 'fusioncharts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
+import { FusionChartsModule } from 'angular4-fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import { ChartsModule } from 'ng2-charts';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
+
+FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ChartsModule,
+    FormsModule,
+    FusionChartsModule,
+    RoundProgressModule
   ],
-  declarations: [ShellComponent, 
-    FooterComponent, 
-    HeaderComponent, 
-    SideBarComponent, 
-    ContentComponent, 
-    CategoriasComponent, 
-    SponsorComponent, 
-    JugadorComponent, 
+  declarations: [ShellComponent,
+    FooterComponent,
+    HeaderComponent,
+    SideBarComponent,
+    ContentComponent,
+    CategoriasComponent,
+    SponsorComponent,
+    JugadorComponent,
     TelefonosutilesComponent,
-    ArbitrosmedicosComponent, 
-    GastomicroComponent, 
+    ArbitrosmedicosComponent,
+    GastomicroComponent,
     GastosgeneralesComponent,
     IngresopartidoComponent],
-    
+
   exports: [ShellComponent]
 })
 export class CoreModule { }
