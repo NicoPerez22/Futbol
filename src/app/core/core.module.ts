@@ -21,9 +21,20 @@ import { FusionChartsModule } from 'angular4-fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 import { ChartsModule } from 'ng2-charts';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { ChartComponent } from './shell/chart/chart.component';
+import { Chart2Component } from './shell/chart2/chart2.component';
 
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
+const appRoutes: Routes = [
+  { path: '', component: CategoriasComponent },
+  { path: 'pagosjugadores', component: CategoriasComponent },
+  { path: 'gastosgenerales',      component: GastosgeneralesComponent },
+  { path: 'ingresopartido', component: IngresopartidoComponent},
+  { path: 'arbitrosmedicos', component: ArbitrosmedicosComponent},
+  { path: 'sponsors', component: SponsorComponent},
+  { path: 'telefonos', component: TelefonosutilesComponent},
+];
 
 @NgModule({
   imports: [
@@ -31,7 +42,13 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     ChartsModule,
     FormsModule,
     FusionChartsModule,
-    RoundProgressModule
+    RoundProgressModule,
+
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true }
+    )
+
   ],
   declarations: [ShellComponent,
     FooterComponent,
@@ -45,7 +62,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     ArbitrosmedicosComponent,
     GastomicroComponent,
     GastosgeneralesComponent,
-    IngresopartidoComponent],
+    IngresopartidoComponent,
+    ChartComponent,
+    Chart2Component],
 
   exports: [ShellComponent]
 })
