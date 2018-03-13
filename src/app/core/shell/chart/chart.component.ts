@@ -19,6 +19,7 @@ export class ChartComponent {
   public barChartData:any[] = [
     {data: [65, 59, 80, 81, 56, 55, 40, 8, 56, 10, 87, 45], label: 'Estacionamiento'},
     {data: [28, 48, 40, 19, 86, 27, 90, 45, 20, 45, 75, 65], label: 'Entradas'},
+    {data: [28, 48, 40, 19, 86, 27, 90, 45, 20, 45, 75, 65], label: 'Entradas'},
   ];
 
   // events
