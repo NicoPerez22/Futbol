@@ -28,7 +28,7 @@ import { HomeComponent } from '../home/home.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 const appRoutes: Routes = [
-  { path: '', component: ShellComponent },
+  { path: '', component: GastomicroComponent },
   { path: 'pagosjugadores', component: CategoriasComponent },
   { path: 'gastosgenerales',      component: GastosgeneralesComponent },
   { path: 'ingresopartido', component: IngresopartidoComponent},
