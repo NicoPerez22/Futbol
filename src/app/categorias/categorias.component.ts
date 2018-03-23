@@ -7,17 +7,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriasComponent implements OnInit {
 
-  categoria:{
-    id: number
-    nsocio: number
-    nombre: string
-    apellido: string
-    pago: number
-  };
-
+  data: any[];
+  dtOptions: any = {};
   constructor() { }
+  
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.dtOptions = {
+      language: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
+    };
+    this.data = [
+      {
+          "NSocio":       "Tiger Nixon",
+          "FechaPago":   "System Architect",
+          "Nombre":     "$3,120",
+          "Telofono": "2011/04/25",
+          "Apellido":     "Edinburgh",
+          "Observacion":       "5421",
+          "Pago": "asdsda",
+          "PlanillaMedica": "dasdsda",
+      },
+      {
+        "NSocio":       "Tiger asdasd",
+        "FechaPago":   "System Arcdasditect",
+        "Nombre":     "$3,1200",
+        "Telofono": "2011/045/25",
+        "Apellido":     "Edinbudargh",
+        "Observacion":       "542d1",
+        "Pago": "asdsdsa",
+        "PlanillaMedica": "dasdsddaa",
+      },
+  ]
+
   }
-
 }

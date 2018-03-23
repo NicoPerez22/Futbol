@@ -24,7 +24,7 @@ import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { ChartComponent } from './shell/chart/chart.component';
 import { Chart2Component } from './shell/chart2/chart2.component';
 import { HomeComponent } from '../home/home.component';
-
+import { DataTablesModule } from 'angular-datatables';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 const appRoutes: Routes = [
@@ -41,6 +41,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    DataTablesModule,
     ChartsModule,
     FormsModule,
     FusionChartsModule,
