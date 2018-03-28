@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 
 import {CoreModule} from './core/core.module';
 import {ShellComponent} from './core/shell/shell.component';
+import { AddjugadorService } from './categorias/addjugador.service';
+
 
 
 @NgModule({
@@ -12,7 +14,7 @@ import {ShellComponent} from './core/shell/shell.component';
     CoreModule,
     BrowserModule
   ],
-  providers: [],
+  providers: [AddjugadorService],
   bootstrap: [ShellComponent]
 })
 export class AppModule { }

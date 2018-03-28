@@ -25,6 +25,7 @@ import { ChartComponent } from './shell/chart/chart.component';
 import { Chart2Component } from './shell/chart2/chart2.component';
 import { HomeComponent } from '../home/home.component';
 import { DataTablesModule } from 'angular-datatables';
+import { HttpClientModule } from '@angular/common/http';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 const appRoutes: Routes = [
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     DataTablesModule,
     ChartsModule,
     FormsModule,

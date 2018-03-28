@@ -28,7 +28,7 @@
       <div>
         <i class="fa fa-table"></i> Agregar Jugador</div>
       <br>
-      <form class="form-header" action="/action_page.php">
+      <form #jugador>
         <div class="form-row">
           <div class="col-6">
             <input type="text" class="form-control" placeholder="N° Socio">
@@ -77,8 +77,29 @@
         </div>
         <br>
         <br>
-        <button type="button" class="btn btn-outline-success">Confirmar</button>
-        <button type="button" class="btn btn-outline-warning">Planilla Medica</button>
+        <button type="button" class="btn btn-outline-success"(click)="add(jugador.value)">Confirmar</button>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalLong">Planilla Medica</button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      ...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
       </form>
       <br>
       <br>
@@ -96,15 +117,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let rec of data">
-            <td scope="row">{{rec.NSocio}}</td>
-            <td>{{rec.FechaPago}}</td>
-            <td>{{rec.Nombre}}</td>
-            <td>{{rec.Telofono}}</td>
-            <td>{{rec.Apellido}}</td>
-            <td>{{rec.Observacion}}</td>
-            <td>{{rec.Pago}}</td>
-            <td>{{rec.PlanillaMedica}}</td>
+          <tr *ngFor="let rec of jugador">
+            <td scope="row">{{rec.nsocio}}</td>
+            <td>{{rec.fechapago}}</td>
+            <td>{{rec.nombre}}</td>
+            <td>{{rec.telofono}}</td>
+            <td>{{rec.apellido}}</td>
+            <td>{{rec.observacion}}</td>
+            <td>{{rec.pago}}</td>
+            <td>{{rec.planillamed}}</td>
           </tr>
           <tr>
             <td scope="row">2</td>

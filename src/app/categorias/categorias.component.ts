@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AddjugadorService } from './addjugador.service';
+import {FormGroup,FormControl,Validators,FormsModule, } from '@angular/forms';  
+import { Jugador } from './JugadorObj';
+
 
 @Component({
   selector: 'app-categorias',
@@ -7,37 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriasComponent implements OnInit {
 
-  data: any[];
-  dtOptions: any = {};
-  constructor() { }
+    jugador: Array<any>;
+    data: any[];
+    dtOptions: any = {};
+
+    
+    constructor(private addjugadorService: AddjugadorService) {  }
   
+  ngOnInit() {
+   // this.dtOptions = {
+    //  language: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
+    //};
 
-  ngOnInit(): void {
-    this.dtOptions = {
-      language: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
-    };
-    this.data = [
-      {
-          "NSocio":       "Tiger Nixon",
-          "FechaPago":   "System Architect",
-          "Nombre":     "$3,120",
-          "Telofono": "2011/04/25",
-          "Apellido":     "Edinburgh",
-          "Observacion":       "5421",
-          "Pago": "asdsda",
-          "PlanillaMedica": "dasdsda",
-      },
-      {
-        "NSocio":       "Tiger asdasd",
-        "FechaPago":   "System Arcdasditect",
-        "Nombre":     "$3,1200",
-        "Telofono": "2011/045/25",
-        "Apellido":     "Edinbudargh",
-        "Observacion":       "542d1",
-        "Pago": "asdsdsa",
-        "PlanillaMedica": "dasdsddaa",
-      },
-  ]
-
+    this.addjugadorService.getJugador()
+    .subscribe(res => this.jugador = res);
   }
+
+ // save(): void {
+   // this.addjugadorService.updateJugador(this.jugador)
+   //   .subscribe(() => this.goBack());
+  //}
+
 }
