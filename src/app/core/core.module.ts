@@ -29,9 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 const appRoutes: Routes = [
-  { path: '', component: GastomicroComponent },
+  { path: '', component: HomeComponent },
   { path: 'pagosjugadores', component: CategoriasComponent },
-  { path: 'gastosgenerales',      component: GastosgeneralesComponent },
+  { path: 'gastosgenerales', component: GastosgeneralesComponent },
   { path: 'ingresopartido', component: IngresopartidoComponent},
   { path: 'arbitrosmedicos', component: ArbitrosmedicosComponent},
   { path: 'sponsors', component: SponsorComponent},
