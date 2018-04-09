@@ -1,4 +1,6 @@
 export class Jugador {
+    id: any;
+    data: any;
     nsocio: number;
     nombre: string;
     apellido: string;

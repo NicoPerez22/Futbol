@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
-
+var cors = require('cors')
 // Connect
 const connection = (callback) => {
     const postConeccion = (err, client) => {
@@ -12,7 +12,7 @@ const connection = (callback) => {
     }
     return MongoClient.connect('mongodb://localhost:27017/club', postConeccion);
 };
-
+router.use(cors())
 // Get Jugadores
 router.get('/jugador', (req, res) => {
     const miFuncion = (db) => {

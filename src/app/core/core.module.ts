@@ -50,8 +50,7 @@ const appRoutes: Routes = [
     RoundProgressModule,
 
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
+      appRoutes
     )
 
   ],
