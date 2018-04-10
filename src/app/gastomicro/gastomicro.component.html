@@ -19,12 +19,18 @@
                <div><i class="fa fa-table"></i> Agregar Gasto Micro</div>
                <br>
                <form class="form-header" action="/action_page.php">
-                <label for="nombre">Destino</label>
-                <input type="nombre" class="form-control" id="Destino">
-                <label for="apellido">Monto</label>
-                <input type="apellido" class="form-control" id="Monto">
-                <div class="form-check">
+                <div class="form-row">
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Destino">
+                  </div>
+                  <br>
+                  <br>
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Monto">
+                  </div>
                 </div>
+                <br>
+                <br>
                  <button type="button" class="btn btn-outline-success">Confirmar</button>
                </form>
                <br>
@@ -36,24 +42,10 @@
                   <th scope="col">Monto</th>
                 </tr>
               </thead>
-              <tfoot>
-              </tfoot>
               <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">Total</th>
-                      <td>5.000</td>
+                  <tr *ngFor="let micro of micros">
+                      <td scope="row">{{micro.destino}}</td>
+                      <td>{{micro.monto}}</td>
                     </tr>
                 </tbody>
               </table>

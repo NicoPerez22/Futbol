@@ -16,7 +16,12 @@ export class CategoriasComponent implements OnInit {
     data: any[];
     dtOptions: any = {};
     jugadores: Jugador[];
-    
+    jugador: Jugador; 
+
+    myEvent(event) {
+      alert('Puto')
+      console.log(event);
+    }
     constructor(private addjugadorService: AddjugadorService) { }
   
   ngOnInit() {
@@ -24,6 +29,11 @@ export class CategoriasComponent implements OnInit {
    .subscribe(res => {
      this.jugadores = res;
    });
+
+   
+   this.addjugadorService.addJugador(this.jugador)
+   .subscribe(Jugador => this.jugadores.push(Jugador));
+
   }
 
 }

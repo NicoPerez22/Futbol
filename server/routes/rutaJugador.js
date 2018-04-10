@@ -29,6 +29,39 @@ router.get('/jugador', (req, res) => {
     };
     connection(miFuncion);
 });
+// Get GastosMicros
+router.get('/gastomicro', (req, res) => {
+    const miFuncion = (db) => {
+        db.collection('gastomicro')
+            .find()
+            .toArray()
+            .then((gastomicro) => {
+                response.data = gastomicro;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    };
+    connection(miFuncion);
+});
+
+//Get GastosGenerales
+router.get('/gastosgenerales', (req, res) => {
+    const miFuncion = (db) => {
+        db.collection('gastosgenerales')
+            .find()
+            .toArray()
+            .then((gastosgenerales) => {
+                response.data = gastosgenerales;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    };
+    connection(miFuncion);
+});
 
 // Get Silva
 router.get('/silva', (req, res) => {
@@ -37,14 +70,25 @@ router.get('/silva', (req, res) => {
 });
 
 // Saludar por POST
-//router.post('/saluda', (req, res) => {
-  //  res.json({mensaje: "Holaa putito"});
-//});
+router.post('/jugador', (req, res) => {
+    const miFuncion = (db) => {
+        db.collection('jugador')
+        .then((jugador) => {
+            response.data = juugador;
+            res.json(response);
+        })
+        .catch((err) => {
+            sendError(err, res);
+        });
+    };
+    res.json({mensaje: "Holaa putito"});
+    connection(miFuncion);
+});
 
 // Saludar por POST
-router.get('/saluda', (req, res) => {
-    res.json({mensaje: "Holaa trolita"});
-});
+//router.get('/saluda', (req, res) => {
+//    res.json({mensaje: "Holaa trolita"});
+//});
 
 // Error handling
 const sendError = (err, res) => {

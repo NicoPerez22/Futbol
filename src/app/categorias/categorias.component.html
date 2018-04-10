@@ -77,7 +77,7 @@
         </div>
         <br>
         <br>
-        <button type="button" class="btn btn-outline-success"(click)="add(jugador.value)">Confirmar</button>
+        <button type="button" class="btn btn-outline-success"(click)="myEvent($event)">Confirmar</button>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalLong">Planilla Medica</button>
               <!-- Modal -->
@@ -120,14 +120,14 @@
         <tbody>
           <tr *ngFor="let rec of jugadores">
             <td scope="row">{{rec.nsocio}}</td>
-            <td>{{rec.fechapago}}</td>
             <td>{{rec.nombre}}</td>
-            <td>{{rec.telofono}}</td>
             <td>{{rec.apellido}}</td>
+            <td>{{rec.telofono}}</td>
+            <td>{{rec.fechapago}}</td>
             <td>{{rec.observacion}}</td>
-            <td>{{rec.pago}}</td>
-            <td>{{rec.mail}}</td>
             <td>{{rec.planillamed}}</td>
+            <td>{{rec.mail}}</td>
+            <td>{{rec.pago}}</td>
           </tr>
         </tbody>
       </table>

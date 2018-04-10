@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
@@ -25,17 +26,21 @@ export class AddjugadorService {
     }
 
     updateJugador(jugador: Jugador): Observable<any> {
+        const url = this.APIUrl + 'jugador/';
         return this.http.put(this.APIUrl, jugador, httpOptions)
     }
 
     addJugador(jugador: Jugador): Observable<Jugador> {
         return this.http.post<Jugador>(this.APIUrl, jugador, httpOptions)
-      }
+        .pipe(
+            map(res => res.data)
+        );
+    }
 
-    
+
 }
 
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+};

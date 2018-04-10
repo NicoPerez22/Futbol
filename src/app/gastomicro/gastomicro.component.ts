@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Micro } from './microObj';
+import { MicrosService } from './micros.service';
 
 @Component({
   selector: 'app-gastomicro',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GastomicroComponent implements OnInit {
 
-  constructor() { }
+  micros: Micro[];
+  micro: Micro;
+
+  constructor(private microsService: MicrosService) { }
 
   ngOnInit() {
+    this.microsService.getMicro()
+    .subscribe(res => {
+      this.micros = res;
+    });
+
+
+    
   }
 
 }

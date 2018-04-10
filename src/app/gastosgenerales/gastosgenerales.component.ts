@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GastosgeneralesService } from './gastosgenerales.service';
+import { GastosG } from './gastosObj';
 
 @Component({
   selector: 'app-gastosgenerales',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GastosgeneralesComponent implements OnInit {
 
-  constructor() { }
+  gastos: GastosG[];
+  gasto: GastosG;
+
+  constructor(private gastosGeneralesservice: GastosgeneralesService) { }
 
   ngOnInit() {
+    this.gastosGeneralesservice.getGastos()
+    .subscribe(res => {
+      this.gastos = res;
+    }
+
+    )
   }
 
 }
