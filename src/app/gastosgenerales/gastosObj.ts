@@ -2,7 +2,7 @@ export class GastosG {
     id: any;
     data: any;
     nombre: string;
-    trabajoreal: string;
+    trabajor: string;
     monto: number;
 
 }

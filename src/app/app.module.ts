@@ -7,6 +7,9 @@ import {ShellComponent} from './core/shell/shell.component';
 import { AddjugadorService } from './categorias/addjugador.service';
 import { MicrosService } from './gastomicro/micros.service';
 import { GastosgeneralesService } from './gastosgenerales/gastosgenerales.service';
+import { TelefonoutilService } from './telefonosutiles/telefonoutil.service';
+import { ArbitrosmedService } from './arbitrosmedicos/arbitrosmed.service';
+import { SponsorService } from './sponsor/sponsor.service';
 
 
 
@@ -18,7 +21,10 @@ import { GastosgeneralesService } from './gastosgenerales/gastosgenerales.servic
   ],
   providers: [AddjugadorService, 
     MicrosService,
-    GastosgeneralesService
+    GastosgeneralesService,
+    TelefonoutilService,
+    ArbitrosmedService,
+    SponsorService
   ],
   bootstrap: [ShellComponent]
 })

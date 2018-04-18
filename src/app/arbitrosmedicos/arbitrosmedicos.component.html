@@ -37,13 +37,45 @@
               <br>
                <div><i class="fa fa-table"></i> Agregar Montos</div>
                <br>
-               <form class="form-header" action="/action_page.php">
-                <label for="nombre">Monto Arbitros</label>
-                <input type="nombre" class="form-control" id="Destino">
-                <label for="apellido">Monto Medicos</label>
-                <input type="apellido" class="form-control" id="Monto">
-                 <div class="form-check">
-                 </div>
+               <form #arbitro>
+                <div class="form-row">
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Nombre">
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Apellido">
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Mail">
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Fecha de Nacimiento">
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Monto Arbitros">
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Monto Medicos">
+                  </div>
+                </div>
+                <br>
+                <br>
+                <br>
                  <button type="button" class="btn btn-outline-success">Confirmar</button>
                </form>
                <br>
@@ -51,40 +83,24 @@
                <table class="table">
                   <thead class="thead-dark">
                 <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Mail</th>
+                  <th scope="col">Fecha Nacimiento</th>
                   <th scope="col">Monto Arbitros</th>
                   <th scope="col">Monto Medicos</th>
                 </tr>
               </thead>
               <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
+                  <tr *ngFor="let rec of arbitros">
+                    <td>{{rec.nombre}}</td>
+                    <td>{{rec.apellido}}</td>
+                    <td>{{rec.mail}}</td>
+                    <td>{{rec.fechanacimiento}}</td>
+                    <td>{{rec.marbitros}}</td>
+                    <td>{{rec.mmedicos}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                      </tr>
-                      <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                        </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">Total</th>
-                      <td>5.000</td>
-                    </tr>
-                </tbody>
+              </tbody>
               </table>
           </div>
         </div>

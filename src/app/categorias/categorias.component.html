@@ -8,7 +8,7 @@
           Mes: Enero
         </button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Febrero</a>
+          <a class="dropdown-item" href="/pagosjugadores">Febrero</a>
           <a class="dropdown-item" href="#">Marzo</a>
           <a class="dropdown-item" href="#">Abril</a>
         </div>
@@ -28,56 +28,63 @@
       <div>
         <i class="fa fa-table"></i> Agregar Jugador</div>
       <br>
-      <form #jugador>
+      <form (ngSubmit)="onSubmit(Jugador);" #Jugador="ngForm">
         <div class="form-row">
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="N° Socio">
+            <input matInput class="form-control" placeholder="N° Socio" #nsocio [(ngModel)]="JugadorModel.nsocio" name="Nsocio" required>
           </div>
           <br>
           <br>
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Fecha de Pago">
+            <input matInput class="form-control" placeholder="Nombre" #nombre [(ngModel)]="JugadorModel.nombre" name="Nombre" required>
           </div>
         </div>
         <br>
         <br>
         <div class="form-row">
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Nombre">
+            <input matInput class="form-control" placeholder="Apellido" #apellido [(ngModel)]="JugadorModel.apellido" name="Apellido" required>
           </div>
           <br>
           <br>
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Telofono">
+            <input matInput class="form-control" placeholder="Telefono" #telefono [(ngModel)]="JugadorModel.telefono" name="Telefono" required>
           </div>
         </div>
         <br>
         <br>
         <div class="form-row">
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Apellido">
+            <input matInput class="form-control" placeholder="Fecha de Pago" #fechapago [(ngModel)]="JugadorModel.fechapago" name="Fechapago" required>
           </div>
           <br>
           <br>
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Observacion">
+            <input matInput class="form-control" placeholder="Observacion" #observacion [(ngModel)]="JugadorModel.observacion" name="Observacion" required>
           </div>
         </div>
         <br>
         <br>
         <div class="form-row">
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Pago">
+            <input matInput class="form-control" placeholder="Planilla Medica" #planillamed [(ngModel)]="JugadorModel.planillamed" name="Planillamed" required>
           </div>
           <br>
           <br>
           <div class="col-6">
-            <input type="text" class="form-control" placeholder="Planilla Medica">
+            <input matInput class="form-control" placeholder="Mail" #mail [(ngModel)]="JugadorModel.mail" name="Mail" required>
           </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="col-6">
+              <input matInput class="form-control" placeholder="Pago" #pago [(ngModel)]="JugadorModel.pago" name="Pago" required>
+            </div>
         </div>
         <br>
         <br>
-        <button type="button" class="btn btn-outline-success"(click)="myEvent($event)">Confirmar</button>
+        <button class="btn btn-outline-success"[disabled]="!Jugador.form.valid">Confirmar</button>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalLong">Planilla Medica</button>
               <!-- Modal -->
@@ -85,17 +92,17 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">LAUTI PUTO</h5>
+                      <h5 class="modal-title" id="exampleModalLongTitle">Planilla Medica</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                      ...
+                      Texto
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary">Guardar</button>
                     </div>
                   </div>
                 </div>
@@ -122,7 +129,7 @@
             <td scope="row">{{rec.nsocio}}</td>
             <td>{{rec.nombre}}</td>
             <td>{{rec.apellido}}</td>
-            <td>{{rec.telofono}}</td>
+            <td>{{rec.telefono}}</td>
             <td>{{rec.fechapago}}</td>
             <td>{{rec.observacion}}</td>
             <td>{{rec.planillamed}}</td>

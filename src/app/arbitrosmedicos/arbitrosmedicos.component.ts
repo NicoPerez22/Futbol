@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Arbitro, Medico } from './arbimedObj';
+import { ArbitrosmedService } from './arbitrosmed.service';
 
 @Component({
   selector: 'app-arbitrosmedicos',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArbitrosmedicosComponent implements OnInit {
 
-  constructor() { }
+  arbitros: Arbitro[];
+  arbitro: Arbitro;
+  medicos: Medico[];
+  medico: Medico;
+
+  constructor(arbiMedService: ArbitrosmedService) { }
 
   ngOnInit() {
+    //this.arbiMedService.getArbitros()
+    //.subscribe(res => {
+    //  this.arbitros = res;
+    //});
+
+    //this.arbiMedService.getmedicos()
+   // .subscribe(res => {
+    //  this.arbitros = res;
+    //});
   }
 
 }

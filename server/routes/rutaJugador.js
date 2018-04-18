@@ -63,6 +63,57 @@ router.get('/gastosgenerales', (req, res) => {
     connection(miFuncion);
 });
 
+//Get TelefonosUtiles
+router.get('/telefonos', (req, res) => {
+    const miFuncion = (db) => {
+        db.collection('telefonosutiles')
+            .find()
+            .toArray()
+            .then((telefonosutiles) => {
+                response.data = telefonosutiles;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    };
+    connection(miFuncion);
+});
+
+//Get ArbitrosMedicos
+router.get('/arbitrosmedicos', (req, res) => {
+    const miFuncion = (db) => {
+        db.collection('arbitrosmedicos')
+            .find()
+            .toArray()
+            .then((arbitrosmedicos) => {
+                response.data = arbitrosmedicos;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    };
+    connection(miFuncion);
+});
+
+//Get sponsors
+router.get('/sponsors', (req, res) => {
+    const miFuncion = (db) => {
+        db.collection('sponsors')
+            .find()
+            .toArray()
+            .then((sponsors) => {
+                response.data = sponsors;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    };
+    connection(miFuncion);
+});
+
 // Get Silva
 router.get('/silva', (req, res) => {
     const miFuncion = 

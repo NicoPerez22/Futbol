@@ -19,17 +19,32 @@
                 <br>
                  <div><i class="fa fa-table"></i> Agregar Datos</div>
                  <br>
-                 <form class="form-header" action="/action_page.php">
-                   <label for="nombre">Nombre</label>
-                   <input type="nombre" class="form-control" id="Destino">
-                   <label for="apellido">Profesion</label>
-                   <input type="apellido" class="form-control" id="Monto">
-                   <label for="apellido">Club</label>
-                   <input type="apellido" class="form-control" id="Monto">
-                   <label for="apellido">Telefono</label>
-                   <input type="apellido" class="form-control" id="Monto">
-                   <div class="form-check">
-                   </div>
+                 <form #telefonos>
+                  <div class="form-row">
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Nombre">
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Profesion">
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Club">
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-6">
+                      <input type="text" class="form-control" placeholder="Telefono">
+                    </div>
+                  </div>
+                  <br>
+                  <br>
                    <button type="button" class="btn btn-outline-success">Confirmar</button>
                  </form>
                  <br>
@@ -38,6 +53,7 @@
                     <thead class="thead-dark">
                   <tr>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
                     <th scope="col">Profesion</th>
                     <th scope="col">Club</th>
                     <th scope="col">Telefono</th>
@@ -46,48 +62,13 @@
                 <tfoot>
                 </tfoot>
                 <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Mark</td>
-                      <td>Mark</td>
+                    <tr *ngFor="let rec of gatos">
+                        <td>{{rec.nombre}}</td>
+                        <td>{{rec.apellido}}</td>
+                        <td>{{rec.profesion}}</td>
+                        <td>{{rec.club}}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                        <td>{{rec.telef}}</td>
                     </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Mark</td>
-                      <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                      </tr>
-                      <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Mark</td>
-                          <td>Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Mark</td>
-                            <td>Mark</td>
-                          </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>Mark</td>
-                      <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Total</th>
-                        <td>5.000</td>
-                        <td>Mark</td>
-                        <td>Mark</td>
-                      </tr>
                   </tbody>
                 </table>
             </div>

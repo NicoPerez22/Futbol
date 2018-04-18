@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TelefonosUtil } from './telefonoObj';
+import { TelefonoutilService } from './telefonoutil.service';
 
 @Component({
   selector: 'app-telefonosutiles',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelefonosutilesComponent implements OnInit {
 
-  constructor() { }
+  gatos: TelefonosUtil[];
+  gato: TelefonosUtil;
+
+  constructor(private telefonoService: TelefonoutilService) { }
 
   ngOnInit() {
+    this.telefonoService.gettele()
+    .subscribe(res => {
+      this.gatos
+       = res;
+    }
+    
+    )
   }
 
 }

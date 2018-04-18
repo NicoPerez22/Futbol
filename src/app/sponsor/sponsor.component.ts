@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SponsorService } from './sponsor.service';
+import { Sponsor } from './sponsorObj';
 
 @Component({
   selector: 'app-sponsor',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SponsorComponent implements OnInit {
 
-  constructor() { }
+  sponsors: Sponsor[];
+  sponsor: Sponsor;
+  
+  constructor(private sponsorsService: SponsorService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.sponsorsService.getJugador()
+    .subscribe(res => {
+      this.sponsors = res;
+    });
+  }
 }

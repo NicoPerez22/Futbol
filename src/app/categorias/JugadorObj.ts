@@ -1,13 +1,13 @@
 export class Jugador {
-    id: any;
-    data: any;
-    nsocio: number;
-    nombre: string;
-    apellido: string;
-    telefono: number;
-    fechapago: number;
-    observacion: string;
-    planillamed: string;
-    pago: number;
+    public id: any;
+    public data: any;
+    public nsocio: number;
+    public nombre: string;
+    public apellido: string;
+    public telefono: number;
+    public fechapago: number;
+    public observacion: string;
+    public planillamed: string;
+    public pago: number;
 
 }

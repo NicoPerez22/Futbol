@@ -17,15 +17,21 @@
               <br>
                <div><i class="fa fa-table"></i> Agregar Datos</div>
                <br>
-               <form class="form-header" action="/action_page.php">
-                <label for="nombre">Nombre</label>
-                <input type="nombre" class="form-control" id="Destino">
-                <label for="apellido">Trabajo Realizado</label>
-                <input type="apellido" class="form-control" id="Monto">
-                <label for="apellido">Monto Trabajo</label>
-                <input type="apellido" class="form-control" id="Monto">
-                <div class="form-check">
+               <form class="form-header">
+                <div class="form-row">
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Destino">
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Monto">
+                  </div>
                 </div>
+                <br>
+                <br>
+                <br>
                  <button type="button" class="btn btn-outline-success">Confirmar</button>
                </form>
                <br>
@@ -40,26 +46,11 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr>
-                    <th class="col-xs-3">1</th>
-                    <td>Pintura</td>
-                    <td>1.500</td>
+                  <tr *ngFor="let rec of gastos">
+                      <td>{{rec.nombre}}</td>
+                      <td>{{rec.trabajor}}</td>
+                      <td>{{rec.monto}}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Alambrado</td>
-                    <td>1.500</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Limpieza</td>
-                    <td>2.000</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">Total</th>
-                      <td colspan="1"></td>
-                      <td>5.000</td>
-                    </tr>
                 </tbody>
               </table>
           </div>
