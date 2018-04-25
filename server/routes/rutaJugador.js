@@ -14,7 +14,7 @@ const connection = (callback) => {
 };
 router.use(cors())
 // Get Jugadores
-router.get('/jugador', (req, res) => {
+router.get('/pagosjugadores', (req, res) => {
     const miFuncion = (db) => {
         db.collection('jugador')
             .find()
@@ -116,12 +116,12 @@ router.get('/sponsors', (req, res) => {
 
 // Get Silva
 router.get('/silva', (req, res) => {
-    const miFuncion = 
+    const miFuncion =
     connection(miFuncion);
 });
 
 // Saludar por POST
-router.post('/jugador', (req, res) => {
+router.post('/pagosjugadores', (req, res) => {
     const miFuncion = (db) => {
         db.collection('jugador')
         .then((jugador) => {

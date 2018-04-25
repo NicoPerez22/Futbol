@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ShellComponent } from './shell/shell.component';
@@ -48,6 +48,7 @@ const appRoutes: Routes = [
     FormsModule,
     FusionChartsModule,
     RoundProgressModule,
+    ReactiveFormsModule,
 
     RouterModule.forRoot(
       appRoutes

@@ -16,9 +16,9 @@ export class AddjugadorService {
     APIUrl = environment.API_URL;
 
     constructor(private http: HttpClient) { }
-  
+
     getJugador(): Observable<Jugador[]> {
-        const url = this.APIUrl + 'jugador/';
+        const url = this.APIUrl + 'pagosjugadores/';
         return this.http.get<any>(url)
         .pipe(
             map(res => res.data)
@@ -26,15 +26,15 @@ export class AddjugadorService {
     }
 
     updateJugador(jugador: Jugador): Observable<any> {
-        const url = this.APIUrl + 'jugador/';
+        const url = this.APIUrl + 'pagosjugadores/';
         return this.http.put(this.APIUrl, jugador, httpOptions)
     }
 
-    addJugador(jugador: Jugador): Observable<Jugador> {
-        return this.http.post<Jugador>(this.APIUrl, jugador, httpOptions)
-        .pipe(
-            map(res => res.data)
-        );
+    addJugador(jugador): Observable<Jugador> {
+      const url = this.APIUrl + 'pagosjugadores/';
+      return this.http
+        .post<Jugador>(url, jugador)
+        .pipe(map(res => res));
     }
 
 

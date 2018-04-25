@@ -28,63 +28,64 @@
       <div>
         <i class="fa fa-table"></i> Agregar Jugador</div>
       <br>
-      <form (ngSubmit)="onSubmit(Jugador);" #Jugador="ngForm">
+      <section class="createJugador">
+      <form [formGroup]="jugadorForm" (ngSubmit)="onSubmitJugador()">
         <div class="form-row">
           <div class="col-6">
-            <input matInput class="form-control" placeholder="N° Socio" #nsocio [(ngModel)]="JugadorModel.nsocio" name="Nsocio" required>
+            <input  for="nsocio" id="nsocio" class="form-control" placeholder="N° Socio" name="nsocio" formControlName="nsocio">
           </div>
           <br>
           <br>
           <div class="col-6">
-            <input matInput class="form-control" placeholder="Nombre" #nombre [(ngModel)]="JugadorModel.nombre" name="Nombre" required>
+            <input for="nombre" class="form-control" placeholder="Nombre" name="nombre" formControlName="nombre">
           </div>
         </div>
         <br>
         <br>
         <div class="form-row">
           <div class="col-6">
-            <input matInput class="form-control" placeholder="Apellido" #apellido [(ngModel)]="JugadorModel.apellido" name="Apellido" required>
+            <input for="apellido" class="form-control" placeholder="Apellido" name="apellido" formControlName="apellido">
           </div>
           <br>
           <br>
           <div class="col-6">
-            <input matInput class="form-control" placeholder="Telefono" #telefono [(ngModel)]="JugadorModel.telefono" name="Telefono" required>
-          </div>
-        </div>
-        <br>
-        <br>
-        <div class="form-row">
-          <div class="col-6">
-            <input matInput class="form-control" placeholder="Fecha de Pago" #fechapago [(ngModel)]="JugadorModel.fechapago" name="Fechapago" required>
-          </div>
-          <br>
-          <br>
-          <div class="col-6">
-            <input matInput class="form-control" placeholder="Observacion" #observacion [(ngModel)]="JugadorModel.observacion" name="Observacion" required>
+            <input for="telefono" class="form-control" placeholder="Telefono" name="telefono" formControlName="telefono">
           </div>
         </div>
         <br>
         <br>
         <div class="form-row">
           <div class="col-6">
-            <input matInput class="form-control" placeholder="Planilla Medica" #planillamed [(ngModel)]="JugadorModel.planillamed" name="Planillamed" required>
+            <input for="fechapago" class="form-control" placeholder="Fecha de Pago" name="fechapago" formControlName="fechapago">
           </div>
           <br>
           <br>
           <div class="col-6">
-            <input matInput class="form-control" placeholder="Mail" #mail [(ngModel)]="JugadorModel.mail" name="Mail" required>
+            <input for="observacion" class="form-control" placeholder="Observacion" name="observacion" formControlName="observacion">
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-row">
+          <div class="col-6">
+            <input for="planillaMed" class="form-control" placeholder="Planilla Medica" name="planillaMed" formControlName="planillamed">
+          </div>
+          <br>
+          <br>
+          <div class="col-6">
+            <input for="mail" class="form-control" placeholder="Mail" name="mail" formControlName="mail">
           </div>
           <br>
           <br>
           <br>
           <br>
           <div class="col-6">
-              <input matInput class="form-control" placeholder="Pago" #pago [(ngModel)]="JugadorModel.pago" name="Pago" required>
+              <input for="pago" class="form-control" placeholder="Pago" name="pago" formControlName="pago">
             </div>
         </div>
         <br>
         <br>
-        <button class="btn btn-outline-success"[disabled]="!Jugador.form.valid">Confirmar</button>
+        <button class="btn btn-outline-success" (click)="enviar()">Confirmar</button>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalLong">Planilla Medica</button>
               <!-- Modal -->
@@ -108,6 +109,7 @@
                 </div>
               </div>
       </form>
+        </section>
       <br>
       <br>
       <table class="table table-striped">
