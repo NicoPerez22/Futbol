@@ -30,7 +30,7 @@ export class AddjugadorService {
         return this.http.put(this.APIUrl, jugador, httpOptions)
     }
 
-    addJugador(jugador): Observable<Jugador> {
+    postJugador(jugador): Observable<Jugador> {
       const url = this.APIUrl + 'pagosjugadores/';
       return this.http
         .post<Jugador>(url, jugador)

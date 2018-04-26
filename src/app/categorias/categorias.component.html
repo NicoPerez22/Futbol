@@ -29,115 +29,115 @@
         <i class="fa fa-table"></i> Agregar Jugador</div>
       <br>
       <section class="createJugador">
-      <form [formGroup]="jugadorForm" (ngSubmit)="onSubmitJugador()">
-        <div class="form-row">
-          <div class="col-6">
-            <input  for="nsocio" id="nsocio" class="form-control" placeholder="N° Socio" name="nsocio" formControlName="nsocio">
+        <form [formGroup]="jugadorForm" (ngSubmit)="onSubmitJugador()">
+          <div class="form-row">
+            <div class="col-6">
+              <input  for="nsocio" id="nsocio" class="form-control" placeholder="N° Socio" name="nsocio" formControlName="nsocio">
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="nombre" class="form-control" placeholder="Nombre" name="nombre" formControlName="nombre">
+            </div>
           </div>
           <br>
           <br>
-          <div class="col-6">
-            <input for="nombre" class="form-control" placeholder="Nombre" name="nombre" formControlName="nombre">
-          </div>
-        </div>
-        <br>
-        <br>
-        <div class="form-row">
-          <div class="col-6">
-            <input for="apellido" class="form-control" placeholder="Apellido" name="apellido" formControlName="apellido">
-          </div>
-          <br>
-          <br>
-          <div class="col-6">
-            <input for="telefono" class="form-control" placeholder="Telefono" name="telefono" formControlName="telefono">
-          </div>
-        </div>
-        <br>
-        <br>
-        <div class="form-row">
-          <div class="col-6">
-            <input for="fechapago" class="form-control" placeholder="Fecha de Pago" name="fechapago" formControlName="fechapago">
+          <div class="form-row">
+            <div class="col-6">
+              <input for="apellido" class="form-control" placeholder="Apellido" name="apellido" formControlName="apellido">
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="telefono" class="form-control" placeholder="Telefono" name="telefono" formControlName="telefono">
+            </div>
           </div>
           <br>
           <br>
-          <div class="col-6">
-            <input for="observacion" class="form-control" placeholder="Observacion" name="observacion" formControlName="observacion">
-          </div>
-        </div>
-        <br>
-        <br>
-        <div class="form-row">
-          <div class="col-6">
-            <input for="planillaMed" class="form-control" placeholder="Planilla Medica" name="planillaMed" formControlName="planillamed">
-          </div>
-          <br>
-          <br>
-          <div class="col-6">
-            <input for="mail" class="form-control" placeholder="Mail" name="mail" formControlName="mail">
+          <div class="form-row">
+            <div class="col-6">
+              <input for="fechapago" class="form-control" placeholder="Fecha de Pago" name="fechapago" formControlName="fechapago">
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="observacion" class="form-control" placeholder="Observacion" name="observacion" formControlName="observacion">
+            </div>
           </div>
           <br>
           <br>
-          <br>
-          <br>
-          <div class="col-6">
+          <div class="form-row">
+            <div class="col-6">
+              <input for="planillaMed" class="form-control" placeholder="Planilla Medica" name="planillaMed" formControlName="planillamed">
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="mail" class="form-control" placeholder="Mail" name="mail" formControlName="mail">
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="col-6">
               <input for="pago" class="form-control" placeholder="Pago" name="pago" formControlName="pago">
             </div>
-        </div>
-        <br>
-        <br>
-        <button class="btn btn-outline-success" (click)="enviar()">Confirmar</button>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalLong">Planilla Medica</button>
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Planilla Medica</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      Texto
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Guardar</button>
-                    </div>
-                  </div>
+          </div>
+          <br>
+          <br>
+          <button class="btn btn-outline-success" (click)="enviar()">Confirmar</button>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalLong">Planilla Medica</button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Planilla Medica</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Texto
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary">Guardar</button>
                 </div>
               </div>
-      </form>
-        </section>
+            </div>
+          </div>
+        </form>
+      </section>
       <br>
       <br>
       <table class="table table-striped">
         <thead class="thead-dark">
-          <tr>
-            <th scope="col">N° Socio</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Fecha de Pago</th>
-            <th scope="col">Observacion</th>
-            <th scope="col">Planilla Medica</th>
-            <th scope="col">Mail</th>
-            <th scope="col">Pago</th>
-          </tr>
+        <tr>
+          <th scope="col">N° Socio</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Fecha de Pago</th>
+          <th scope="col">Observacion</th>
+          <th scope="col">Planilla Medica</th>
+          <th scope="col">Mail</th>
+          <th scope="col">Pago</th>
+        </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let rec of jugadores">
-            <td scope="row">{{rec.nsocio}}</td>
-            <td>{{rec.nombre}}</td>
-            <td>{{rec.apellido}}</td>
-            <td>{{rec.telefono}}</td>
-            <td>{{rec.fechapago}}</td>
-            <td>{{rec.observacion}}</td>
-            <td>{{rec.planillamed}}</td>
-            <td>{{rec.mail}}</td>
-            <td>{{rec.pago}}</td>
-          </tr>
+        <tr *ngFor="let rec of jugadores">
+          <td scope="row">{{rec?.nsocio}}</td>
+          <td>{{rec?.nombre}}</td>
+          <td>{{rec?.apellido}}</td>
+          <td>{{rec?.telefono}}</td>
+          <td>{{rec?.fechapago}}</td>
+          <td>{{rec?.observacion}}</td>
+          <td>{{rec?.planillamed}}</td>
+          <td>{{rec?.mail}}</td>
+          <td>{{rec?.pago}}</td>
+        </tr>
         </tbody>
       </table>
     </div>

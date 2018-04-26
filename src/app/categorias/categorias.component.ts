@@ -27,6 +27,11 @@ export class CategoriasComponent implements OnInit {
 
   jugadorForm;
 
+   createTodo = async function(req, res, next){
+    var todo = {
+      nombre: req.jugador.nombre
+    }
+  }
 
   myEvent(event) {
     alert('Puto')
@@ -46,13 +51,15 @@ export class CategoriasComponent implements OnInit {
   }
 
   onSubmitJugador() {
-    this.addjugadorService.addJugador(this.jugador)
-      .subscribe(Jugador => this.jugadores.push(Jugador));
+    this.jugadores.push(this.jugador)
+    this.addjugadorService.postJugador(this.jugador)
+      .subscribe(jugador => this.jugadores.push(jugador));
   }
-
+    //evento para enviar formulario (comfirmar)
   enviar(jugador): void {
     this.crearJugadorForm(jugador);
   }
+
 
 
 
