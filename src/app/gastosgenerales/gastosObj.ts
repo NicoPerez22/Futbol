@@ -1,4 +1,4 @@
-export class GastosG {
+export class Gastos {
     id: any;
     data: any;
     nombre: string;

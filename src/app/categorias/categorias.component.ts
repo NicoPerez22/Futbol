@@ -27,17 +27,6 @@ export class CategoriasComponent implements OnInit {
 
   jugadorForm;
 
-   createTodo = async function(req, res, next){
-    var todo = {
-      nombre: req.jugador.nombre
-    }
-  }
-
-  myEvent(event) {
-    alert('Puto')
-    console.log(event);
-  }
-
   constructor(private addjugadorService: AddjugadorService) {
   }
 
@@ -55,15 +44,20 @@ export class CategoriasComponent implements OnInit {
     this.addjugadorService.postJugador(this.jugador)
       .subscribe(jugador => this.jugadores.push(jugador));
   }
-    //evento para enviar formulario (comfirmar)
+  //evento para enviar formulario (comfirmar)
   enviar(jugador): void {
     this.crearJugadorForm(jugador);
+  }
+  deleteJugador(index: number, id: number) {
+    const pos = this.jugadores.length - index;
+    this.jugadores.splice(pos, 1);
+    this.addjugadorService.deleteJugador().subscribe();
   }
 
 
 
 
-    crearJugadorForm(jugador = new Jugador()) {
+  crearJugadorForm(jugador = new Jugador()) {
     this.jugadorForm = new FormGroup({
       nsocio: new FormControl(jugador.nsocio, {
         validators: Validators.required
@@ -84,7 +78,7 @@ export class CategoriasComponent implements OnInit {
         validators: Validators.required
       }),
       planillamed: new FormControl(jugador.planillamed, {
-      validators: Validators.required
+        validators: Validators.required
       }),
       mail: new FormControl(jugador.mail, {
         validators: Validators.required

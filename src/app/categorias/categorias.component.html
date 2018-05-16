@@ -85,9 +85,8 @@
           </div>
           <br>
           <br>
-          <button class="btn btn-outline-success" (click)="enviar()">Confirmar</button>
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalLong">Planilla Medica</button>
+          <button class="btn btn-outline-success" (click)="enviar(jugador)">Confirmar</button>
+          <!-- Button trigger modal --
           <!-- Modal -->
           <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -124,10 +123,13 @@
           <th scope="col">Planilla Medica</th>
           <th scope="col">Mail</th>
           <th scope="col">Pago</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let rec of jugadores">
+
+        <tr *ngFor="let rec of jugadores, let i = index;">
           <td scope="row">{{rec?.nsocio}}</td>
           <td>{{rec?.nombre}}</td>
           <td>{{rec?.apellido}}</td>
@@ -137,6 +139,15 @@
           <td>{{rec?.planillamed}}</td>
           <td>{{rec?.mail}}</td>
           <td>{{rec?.pago}}</td>
+          <td class="text-center">
+            <button class="btn btn-warning">
+              <i class="fa fa-list-alt"></i>
+            </button>
+          <td class="text-center">
+            <button class="btn btn-danger">
+              <i class="fa fa-trash"(click)="deleteJugador(i, rec.id)"></i>
+            </button>
+          </td>
         </tr>
         </tbody>
       </table>

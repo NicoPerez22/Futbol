@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GastosgeneralesService } from './gastosgenerales.service';
-import { GastosG } from './gastosObj';
+import { Gastos } from './gastosObj';
 
 @Component({
   selector: 'app-gastosgenerales',
@@ -9,8 +9,8 @@ import { GastosG } from './gastosObj';
 })
 export class GastosgeneralesComponent implements OnInit {
 
-  gastos: GastosG[];
-  gasto: GastosG;
+  gastos: Gastos[];
+  gasto: Gastos;
 
   constructor(private gastosGeneralesservice: GastosgeneralesService) { }
 
@@ -21,6 +21,12 @@ export class GastosgeneralesComponent implements OnInit {
     }
 
     )
+  }
+
+  onSubmitJugador() {
+    this.gastos.push(this.gasto)
+    this.gastosGeneralesservice.postGastos(this.gasto)
+      .subscribe(gasto => this.gastos.push(gasto));
   }
 
 }
