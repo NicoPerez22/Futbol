@@ -8,6 +8,6 @@ export class Jugador {
     public observacion: string;
     public planillamed: string;
     public mail: string;
-    public pago: number;
+    public pago: string;
 
 }

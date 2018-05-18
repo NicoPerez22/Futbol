@@ -40,6 +40,7 @@
     "fusioncharts": "^3.12.2",
     "jquery": "^3.3.1",
     "jquery-easing": "0.0.1",
+    "moment": "^2.22.1",
     "mongodb": "^3.0.5",
     "ng2-charts": "^1.6.0",
     "rxjs": "^5.5.6",

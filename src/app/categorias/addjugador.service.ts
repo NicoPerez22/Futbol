@@ -31,17 +31,18 @@ export class AddjugadorService {
 
   updateJugador(jugador: Jugador): Observable<any> {
     const url = this.APIUrl + 'pagosjugadores/';
-    return this.http.put(this.APIUrl, jugador);
+    return this.http.put(this.APIUrl, jugador, httpOptions);
   }
 
   postJugador(jugador): Observable<Jugador> {
     const url = this.APIUrl + 'pagosjugadores/';
     return this.http
-      .post<Jugador>(url, jugador)
+      .post<Jugador>(url, jugador, httpOptions)
       .pipe(
         tap(res => console.log(res)),
         map(res => res));
   }
+
   deleteJugador(): Observable<Jugador[]> {
     const url = this.APIUrl + 'pagosjugadores/';
     return this.http.delete<any>(url)
@@ -50,6 +51,7 @@ export class AddjugadorService {
         map(res => res.jugadores)
       );
 
+  }
 }
 
 

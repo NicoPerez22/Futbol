@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http/src/client';
 import { Params } from '@angular/router/src/shared';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-categorias',
@@ -14,13 +16,12 @@ import { of } from 'rxjs/observable/of';
 })
 export class CategoriasComponent implements OnInit {
 
-  data: any[];
+  sdata: any[];
   dtOptions: any = {};
   jugadores: Jugador[] = new Array<Jugador>();
   jugador: Jugador;
-
   private truefalse: boolean = false;
-
+  now = moment().format('L');
 
   @Output()
   agreJugador: EventEmitter<Jugador> = new EventEmitter<Jugador>();
@@ -36,24 +37,23 @@ export class CategoriasComponent implements OnInit {
         this.jugadores = res;
       });
 
-    this.crearJugadorForm()
+    this.crearJugadorForm();
   }
 
   onSubmitJugador() {
-    this.jugadores.push(this.jugador)
     this.addjugadorService.postJugador(this.jugador)
-      .subscribe(jugador => this.jugadores.push(jugador));
+      .subscribe(res => this.jugadores.push(res));
   }
-  //evento para enviar formulario (comfirmar)
+
   enviar(jugador): void {
     this.crearJugadorForm(jugador);
   }
-  deleteJugador(index: number, id: number) {
-    const pos = this.jugadores.length - index;
+
+  deleteJugador(index: number,) {
+    const pos = index;
     this.jugadores.splice(pos, 1);
     this.addjugadorService.deleteJugador().subscribe();
   }
-
 
 
 
