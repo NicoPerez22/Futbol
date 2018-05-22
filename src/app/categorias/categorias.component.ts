@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import { AddjugadorService } from './addjugador.service';
 import { FormBuilder, FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule, } from '@angular/forms';
 import { Jugador } from './JugadorObj';
@@ -16,11 +16,8 @@ import * as moment from 'moment';
 })
 export class CategoriasComponent implements OnInit {
 
-  sdata: any[];
-  dtOptions: any = {};
   jugadores: Jugador[] = new Array<Jugador>();
-  jugador: Jugador;
-  private truefalse: boolean = false;
+  @Input()  jugador: Jugador;
   now = moment().format('L');
 
   @Output()
@@ -32,27 +29,43 @@ export class CategoriasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.addjugadorService.getJugador()
-      .subscribe(res => {
-        this.jugadores = res;
-      });
-
-    this.crearJugadorForm();
+    this.addjugadorService.getJugador().subscribe(res => {this.jugadores = res;});
+    this.crearJugadorForm(this.jugador);
   }
 
   onSubmitJugador() {
-    this.addjugadorService.postJugador(this.jugador)
-      .subscribe(res => this.jugadores.push(res));
+    this.jugador = this.prepareSaveJugador();
+    this.agreJugador.emit(this.jugador);
   }
 
   enviar(jugador): void {
+    this.addjugadorService.postJugador(jugador).subscribe(res => this.jugadores.push(res));
     this.crearJugadorForm(jugador);
+    console.log(jugador);
   }
 
   deleteJugador(index: number,) {
     const pos = index;
     this.jugadores.splice(pos, 1);
     this.addjugadorService.deleteJugador().subscribe();
+  }
+
+
+  prepareSaveJugador(): Jugador {
+    const formModel = this.jugadorForm.value;
+    const guardarJugador = new Jugador({
+      id: formModel.id as number,
+      nsocio: formModel.nsocio as string,
+      nombre: formModel.nombre as string,
+      apellido: formModel.apellido as string,
+      telefono: formModel.telefono as string,
+      fechapago: formModel.fechapago as string,
+      observacion: formModel.observacion as string,
+      planillamed: formModel.planillamed as string,
+      mail: formModel.mail as string,
+      pago: formModel.pago as string,
+    });
+    return guardarJugador;
   }
 
 

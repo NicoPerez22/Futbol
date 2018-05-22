@@ -29,10 +29,10 @@
         <i class="fa fa-table"></i> Agregar Jugador</div>
       <br>
       <section class="createJugador">
-        <form [formGroup]="jugadorForm" (ngSubmit)="onSubmitJugador()">
+        <form [formGroup]="jugadorForm" (ngSubmit)="onSubmitJugador()" #jugadorFormId="ngForm">
           <div class="form-row">
             <div class="col-6">
-              <input  for="nsocio" id="nsocio" class="form-control" placeholder="N° Socio" name="nsocio" formControlName="nsocio">
+              <input  for="nsocio" class="form-control" placeholder="N° Socio" name="nsocio" formControlName="nsocio">
             </div>
             <br>
             <br>

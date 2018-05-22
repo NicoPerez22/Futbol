@@ -11,11 +11,7 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class AddjugadorService {
 
-  result: any;
-  jugadorLocal: Jugador;
   APIUrl = environment.API_URL;
-  jugadores: Jugador[] = new Array<Jugador>();
-  jugador: Jugador;
 
   constructor(private http: HttpClient) {
   }
@@ -37,10 +33,8 @@ export class AddjugadorService {
   postJugador(jugador): Observable<Jugador> {
     const url = this.APIUrl + 'pagosjugadores/';
     return this.http
-      .post<Jugador>(url, jugador, httpOptions)
-      .pipe(
-        tap(res => console.log(res)),
-        map(res => res));
+      .post<Jugador>(url, jugador)
+      .pipe(map(res => res));
   }
 
   deleteJugador(): Observable<Jugador[]> {
