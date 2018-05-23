@@ -39,6 +39,7 @@ export class CategoriasComponent implements OnInit {
       .subscribe(res => {
         this.jugadores.push(this.jugador);
       });
+    this.resetFormJugador();
   }
 
 
@@ -64,6 +65,20 @@ export class CategoriasComponent implements OnInit {
       pago: formModel.pago as string,
     });
     return guardarJugador;
+  }
+
+  resetFormJugador() {
+    this.jugadorForm.reset({
+      nsocio: '',
+      telefono: '',
+      apellido: '',
+      nombre: '',
+      fechapago: '',
+      observacion: '',
+      planillamed: '',
+      mail: '',
+      pago: ''
+    });
   }
 
 
