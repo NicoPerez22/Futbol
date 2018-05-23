@@ -85,7 +85,7 @@
           </div>
           <br>
           <br>
-          <button class="btn btn-outline-success" (click)="enviar(jugador)">Confirmar</button>
+          <button type="submit" class="btn btn-outline-success">Confirmar</button>
           <!-- Button trigger modal --
           <!-- Modal -->
           <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -144,8 +144,8 @@
               <i class="fa fa-list-alt"></i>
             </button>
           <td class="text-center">
-            <button class="btn btn-danger">
-              <i class="fa fa-trash"(click)="deleteJugador(i, rec.id)"></i>
+            <button class="btn btn-danger" (click)="deleteJugador(i, rec?.id)">
+              <i class="fa fa-trash"></i>
             </button>
           </td>
         </tr>

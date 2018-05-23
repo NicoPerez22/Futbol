@@ -17,7 +17,7 @@ import * as moment from 'moment';
 export class CategoriasComponent implements OnInit {
 
   jugadores: Jugador[] = new Array<Jugador>();
-  @Input()  jugador: Jugador;
+  jugador: Jugador;
   now = moment().format('L');
 
   @Output()
@@ -33,25 +33,23 @@ export class CategoriasComponent implements OnInit {
     this.crearJugadorForm(this.jugador);
   }
 
-  onSubmitJugador() {
-    this.jugador = this.prepareSaveJugador();
-    this.agreJugador.emit(this.jugador);
+  onSubmitJugador(): void {
+    this.jugador = this.prepGuardarJugador();
+    this.addjugadorService.postJugador(this.jugador)
+      .subscribe(res => {
+        this.jugadores.push(this.jugador);
+      });
   }
 
-  enviar(jugador): void {
-    this.addjugadorService.postJugador(jugador).subscribe(res => this.jugadores.push(res));
-    this.crearJugadorForm(jugador);
-    console.log(jugador);
-  }
 
-  deleteJugador(index: number,) {
+  deleteJugador(index: number, id) {
     const pos = index;
     this.jugadores.splice(pos, 1);
-    this.addjugadorService.deleteJugador().subscribe();
+    this.addjugadorService.deleteJugador(id).subscribe();
   }
 
 
-  prepareSaveJugador(): Jugador {
+  prepGuardarJugador(): Jugador {
     const formModel = this.jugadorForm.value;
     const guardarJugador = new Jugador({
       id: formModel.id as number,

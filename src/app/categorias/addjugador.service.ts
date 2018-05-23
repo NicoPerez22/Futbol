@@ -21,7 +21,13 @@ export class AddjugadorService {
     return this.http.get<any>(url)
       .pipe(
         tap(res => console.log(res)),
-        map(res => res.jugadores)
+        map(res => {
+          const jugadores = [];
+          res.jugadores.forEach(jug => {
+            jugadores.push(new Jugador(jug));
+          })
+          return jugadores;
+        })
       );
   }
 
@@ -37,12 +43,12 @@ export class AddjugadorService {
       .pipe(map(res => res));
   }
 
-  deleteJugador(): Observable<Jugador[]> {
-    const url = this.APIUrl + 'pagosjugadores/';
-    return this.http.delete<any>(url)
+  deleteJugador(jugadorId: number): Observable<Jugador> {
+    const url = this.APIUrl + 'pagosjugadores/' + jugadorId;
+    return this.http.delete<Jugador>(url)
       .pipe(
         tap(res => console.log(res)),
-        map(res => res.jugadores)
+        map(res => res)
       );
 
   }

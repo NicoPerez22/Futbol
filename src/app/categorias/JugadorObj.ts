@@ -12,7 +12,7 @@ export class Jugador {
 
 
   constructor(obj?: any) {
-    this.id = obj && obj.id || 0;
+    this.id = obj && obj._id || 0;
     this.nsocio = obj && obj.nsocio || '';
     this.nombre = obj && obj.nombre || '';
     this.apellido = obj && obj.apellido || '';
