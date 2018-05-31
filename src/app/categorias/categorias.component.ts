@@ -20,6 +20,23 @@ export class CategoriasComponent implements OnInit {
   jugador: Jugador;
   now = moment().format('L');
 
+
+  selectedFilter: string;
+  public filterTypes = [
+    {value:'Enero', display:'Enero'},
+    {value:'Febrero', display:'Febrero'},
+    {value:'Marzo', display:'Marzo'},
+    {value:'Abril', display:'Abril'},
+    {value:'Mayo', display:'Mayo'},
+    {value:'Junio', display:'Junio'},
+    {value:'Julio', display:'Julio'},
+    {value:'Agosto', display:'Agosto'},
+    {value:'Septiembre', display:'Septiembre'},
+    {value:'Octubre', display:'Octubre'},
+    {value:'Noviembre', display:'Noviembre'},
+    {value:'Diciembre', display:'Diciembre'},
+  ];
+
   @Output()
   agreJugador: EventEmitter<Jugador> = new EventEmitter<Jugador>();
 
@@ -80,6 +97,13 @@ export class CategoriasComponent implements OnInit {
       pago: ''
     });
   }
+
+  filterChanged(selectedValue: string) {
+    console.log('value is ', selectedValue);
+    this.addjugadorService.getJugador();
+  }
+
+
 
 
 

@@ -1,38 +1,37 @@
+      <script
+        src="../../../../../workspace/Registrojuicios/Angular-Cli/src/app/cedula-demanda/form-cedula-demanda/form-cedula-demanda.component.ts"></script>
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-table"></i> Gastos Generales</div>
         <div class="card-body">
           <div class="table-responsive">
               <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mes: Enero
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
+                <select class="form-control"   (change)="filterChanged($event.target.value)">
+                  <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
+                  </option>
+                </select>
               </div>
               <br>
               <br>
                <div><i class="fa fa-table"></i> Agregar Datos</div>
                <br>
-               <form class="form-header">
+               <section class="createGasto">
+               <form [formGroup]="gastosForm" (ngSubmit)="onSubmitGasto()" #gastoFormId="ngForm">
                 <div class="form-row">
                   <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Nombre">
+                    <input  for="nombre" class="form-control" placeholder="Nombre" name="nombre" formControlName="nombre">
                   </div>
                   <br>
                   <br>
                   <br>
                   <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Trabajo">
+                    <input for="trabajo" class="form-control" placeholder="Trabajo" name="trabajo" formControlName="trabajo">
                   </div>
                   <br>
                   <br>
                   <br>
                   <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Monto">
+                    <input for="monto" class="form-control" placeholder="Monto" name="monto" formControlName="monto">
                   </div>
                 </div>
                 <br>
@@ -40,22 +39,28 @@
                 <br>
                  <button type="button" class="btn btn-outline-success">Confirmar</button>
                </form>
+               </section>
                <br>
                <br>
-               <div class="table-responsive">
+               <div class="table table-striped">
                <table class="table">
                   <thead class="thead-dark">
                 <tr>
                   <th scope="col">Nombre</th>
-                  <th scope="col">Trabajo Realizado</th>
-                  <th scope="col">Monto Trabajo</th>
+                  <th scope="col">Trabajo</th>
+                  <th scope="col">Monto</th>
                 </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let rec of gastos">
-                      <td>{{rec?.nombre}}</td>
-                      <td>{{rec?.trabajor}}</td>
-                      <td>{{rec?.monto}}</td>
+                  <tr *ngFor="let gast of gastos, let i = index;">
+                      <td>{{gast?.nombre}}</td>
+                      <td>{{gast?.trabajo}}</td>
+                      <td>{{gast?.monto}}</td>
+                    <td class="text-center">
+                      <button class="btn btn-danger" (click)="deleteGasto(i, gast?.id)">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>

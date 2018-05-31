@@ -6,33 +6,47 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { environment } from '../../environments/environment';
-import { Gastos } from './gastosObj';
+import { Gasto } from './gastosObj';
 import {Jugador} from '../categorias/JugadorObj';
 
 @Injectable()
 export class GastosgeneralesService {
 
-  gastosL: Gastos;
   APIUrl = environment.API_URL;
-  gastos: Gastos[] = new Array<Gastos>();
-  gasto: Gastos;
+
 
   constructor(private http: HttpClient) { }
 
-  getGastos(): Observable<Gastos[]> {
+  getGasto(): Observable<Gasto[]> {
     const url = this.APIUrl + 'gastosgenerales/';
     return this.http.get<any>(url)
-    .pipe(
-      map(res => res.gastos)
-    );
-  }
-
-  postGastos(gasto): Observable<Gastos> {
-    const url = this.APIUrl + 'pagosjugadores/';
-    return this.http
-      .post<Gastos>(url, gasto)
       .pipe(
         tap(res => console.log(res)),
-        map(res => res));
+        map(res => {
+          const gastos = [];
+          res.gastos.forEach(gas => {
+            gastos.push(new Gasto(gas));
+          })
+          return gastos;
+        })
+      );
   }
+
+  postGasto(gasto): Observable<Gasto> {
+    const url = this.APIUrl + 'pagosjugadores/';
+    return this.http
+      .post<Gasto>(url, gasto)
+      .pipe(map(res => res));
+  }
+
+  deleteGasto(gastoId: number): Observable<Gasto> {
+    const url = this.APIUrl + 'pagosjugadores/' + gastoId;
+    return this.http.delete<Gasto>(url)
+      .pipe(
+        tap(res => console.log(res)),
+        map(res => res)
+      );
+
+  }
+
 }

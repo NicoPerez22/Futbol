@@ -4,24 +4,10 @@
   <div class="card-body">
     <div class="table-responsive">
       <div class="btn-group">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Mes: Enero
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/pagosjugadores">Febrero</a>
-          <a class="dropdown-item" href="#">Marzo</a>
-          <a class="dropdown-item" href="#">Abril</a>
-        </div>
-      </div>
-      <div class="btn-group">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categoria 2002
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Febrero</a>
-          <a class="dropdown-item" href="#">Marzo</a>
-          <a class="dropdown-item" href="#">Abril</a>
-        </div>
+        <select class="form-control"   (change)="filterChanged($event.target.value)">
+          <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
+          </option>
+        </select>
       </div>
       <br>
       <br>
@@ -151,7 +137,9 @@
         </tr>
         </tbody>
       </table>
-      <h4>Total: $15000</h4>
+      <div>
+      <h4>asdasds</h4>
+      </div>
     </div>
   </div>
 </div>
