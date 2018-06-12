@@ -1,8 +1,8 @@
 export class Gasto {
-    id: any;
-    nombre: string;
-    trabajo: string;
-    monto: string;
+    public id: number;
+    public nombre: string;
+    public trabajo: string;
+    public monto: string;
 
   constructor(obj?: any) {
     this.id = obj && obj._id || 0;

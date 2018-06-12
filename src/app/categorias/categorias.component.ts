@@ -1,11 +1,7 @@
 import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import { AddjugadorService } from './addjugador.service';
-import { FormBuilder, FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule, } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Jugador } from './JugadorObj';
-import { HttpClient } from '@angular/common/http/src/client';
-import { Params } from '@angular/router/src/shared';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import * as moment from 'moment';
 
 

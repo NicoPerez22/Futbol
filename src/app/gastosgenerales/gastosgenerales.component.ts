@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { GastosgeneralesService } from './gastosgenerales.service';
 import { Gasto } from './gastosObj';
-import {Jugador} from '../categorias/JugadorObj';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -11,12 +10,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class GastosgeneralesComponent implements OnInit {
 
-  gastos: Gasto[];
+  gastos: Gasto[] = new Array<Gasto>();
   gasto: Gasto;
-
-  @Output()
-  agreGasto: EventEmitter<Gasto> = new EventEmitter<Gasto>();
-  gastosForm;
 
   selectedFilter: string;
   public filterTypes = [
@@ -33,6 +28,10 @@ export class GastosgeneralesComponent implements OnInit {
     {value:'Noviembre', display:'Noviembre'},
     {value:'Diciembre', display:'Diciembre'},
   ];
+
+  @Output()
+  agreGasto: EventEmitter<Gasto> = new EventEmitter<Gasto>();
+  gastosForm;
 
   constructor(private gastosGeneralesservice: GastosgeneralesService) { }
 
@@ -51,15 +50,21 @@ export class GastosgeneralesComponent implements OnInit {
     this.resetFormGasto();
   }
 
+  deleteGasto(index: number, id) {
+    const pos = index;
+    this.gastos.splice(pos, 1);
+    this.gastosGeneralesservice.deleteGasto(id).subscribe();
+  }
+
   prepGuardarGasto(): Gasto {
     const formModel = this.gastosForm.value;
-    const guardarJugador = new Gasto({
+    const guardarGasto = new Gasto({
       id: formModel.id as number,
       nombre: formModel.nombre as string,
       trabajor: formModel.apellido as string,
       monto: formModel.telefono as string,
     });
-    return guardarJugador;
+    return guardarGasto;
   }
 
   resetFormGasto() {
@@ -70,11 +75,6 @@ export class GastosgeneralesComponent implements OnInit {
     });
   }
 
-  deleteGasto(index: number, id) {
-    const pos = index;
-    this.gastos.splice(pos, 1);
-    this.gastosGeneralesservice.deleteGasto(id).subscribe();
-  }
 
   filterChanged(selectedValue: string) {
     console.log('value is ', selectedValue);
