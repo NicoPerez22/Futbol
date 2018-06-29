@@ -19,28 +19,22 @@ export class GastosgeneralesService {
 
   getGasto(): Observable<Gasto[]> {
     const url = this.APIUrl + 'gastosgenerales/';
-    return this.http.get<any>(url)
+    return this.http
+      .get<any>(url)
       .pipe(
         tap(res => console.log(res)),
-        map(res => {
-          const gastos = [];
-          res.gastos.forEach(gas => {
-            gastos.push(new Gasto(gas));
-          })
-          return gastos;
-        })
-      );
+        map(res => res.data));
   }
 
   postGasto(gasto): Observable<Gasto> {
-    const url = this.APIUrl + 'pagosjugadores/';
+    const url = this.APIUrl + 'gastosgenerales/';
     return this.http
       .post<Gasto>(url, gasto)
       .pipe(map(res => res));
   }
 
   deleteGasto(gastoId: number): Observable<Gasto> {
-    const url = this.APIUrl + 'pagosjugadores/' + gastoId;
+    const url = this.APIUrl + 'gastosgenerales/' + gastoId;
     return this.http.delete<Gasto>(url)
       .pipe(
         tap(res => console.log(res)),
@@ -50,3 +44,6 @@ export class GastosgeneralesService {
   }
 
 }
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};

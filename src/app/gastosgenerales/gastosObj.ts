@@ -9,5 +9,5 @@ export class Gasto {
     this.nombre = obj && obj.nombre || '';
     this.trabajo = obj && obj.trabajo || '';
     this.monto = obj && obj.monto || '';
-}
+  }
 }

@@ -3,6 +3,7 @@ import { AddjugadorService } from './addjugador.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Jugador } from './JugadorObj';
 import * as moment from 'moment';
+import {Router, RouterEvent, Routes} from '@angular/router';
 
 
 @Component({
@@ -33,16 +34,23 @@ export class CategoriasComponent implements OnInit {
     {value:'Diciembre', display:'Diciembre'},
   ];
 
+  public cate = [
+    {value:'Categoria 2000', display:'Categoria 2000'},
+    {value:'Categoria', display:'Categoria'},
+    {value:'Categoria', display:'Categoria'},
+    {value:'Categoria', display:'Categoria'},
+  ]
+
   @Output()
   agreJugador: EventEmitter<Jugador> = new EventEmitter<Jugador>();
 
   jugadorForm;
 
-  constructor(private addjugadorService: AddjugadorService) {
+  constructor(private router: Router, private addjugadorService: AddjugadorService) {
   }
 
   ngOnInit() {
-    this.addjugadorService.getJugador().subscribe(res => {this.jugadores = res;});
+    this.addjugadorService.getJugador().subscribe(res => {this.jugadores = res; });
     this.crearJugadorForm(this.jugador);
   }
 
@@ -53,6 +61,12 @@ export class CategoriasComponent implements OnInit {
         this.jugadores.push(this.jugador);
       });
     this.resetFormJugador();
+    // this.addjugadorService.editJugador(this.jugador).subscribe(
+    //   res => this.router.navigate(['/']),
+    //   err => alert('Algo salio mal. ' +
+    //     'El formulario no puede guardarse en este momento. ' +
+    //     'Si lo desea puede dejar esta pestaña del navegador web abierta para no perder los cambios e intentar guardar mas tarde.')
+    // );
   }
 
 
@@ -62,6 +76,9 @@ export class CategoriasComponent implements OnInit {
     this.addjugadorService.deleteJugador(id).subscribe();
   }
 
+  //editJugador(j) {
+  //  this.router.navigate(['/pagosjugadores/modificar/' + j.id]);
+  //}
 
   prepGuardarJugador(): Jugador {
     const formModel = this.jugadorForm.value;

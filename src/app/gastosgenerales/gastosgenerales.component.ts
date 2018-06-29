@@ -1,7 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { GastosgeneralesService } from './gastosgenerales.service';
-import { Gasto } from './gastosObj';
+import {GastosgeneralesService} from './gastosgenerales.service';
+import {Gasto} from './gastosObj';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router, RouterEvent, Routes} from '@angular/router';
 
 @Component({
   selector: 'app-gastosgenerales',
@@ -15,28 +16,30 @@ export class GastosgeneralesComponent implements OnInit {
 
   selectedFilter: string;
   public filterTypes = [
-    {value:'Enero', display:'Enero'},
-    {value:'Febrero', display:'Febrero'},
-    {value:'Marzo', display:'Marzo'},
-    {value:'Abril', display:'Abril'},
-    {value:'Mayo', display:'Mayo'},
-    {value:'Junio', display:'Junio'},
-    {value:'Julio', display:'Julio'},
-    {value:'Agosto', display:'Agosto'},
-    {value:'Septiembre', display:'Septiembre'},
-    {value:'Octubre', display:'Octubre'},
-    {value:'Noviembre', display:'Noviembre'},
-    {value:'Diciembre', display:'Diciembre'},
+    {value: 'Enero', display: 'Enero'},
+    {value: 'Febrero', display: 'Febrero'},
+    {value: 'Marzo', display: 'Marzo'},
+    {value: 'Abril', display: 'Abril'},
+    {value: 'Mayo', display: 'Mayo'},
+    {value: 'Junio', display: 'Junio'},
+    {value: 'Julio', display: 'Julio'},
+    {value: 'Agosto', display: 'Agosto'},
+    {value: 'Septiembre', display: 'Septiembre'},
+    {value: 'Octubre', display: 'Octubre'},
+    {value: 'Noviembre', display: 'Noviembre'},
+    {value: 'Diciembre', display: 'Diciembre'},
   ];
 
   @Output()
   agreGasto: EventEmitter<Gasto> = new EventEmitter<Gasto>();
+
   gastosForm;
 
-  constructor(private gastosGeneralesservice: GastosgeneralesService) { }
+  constructor(private gastosGeneralesservice: GastosgeneralesService) {
+  }
 
   ngOnInit() {
-    this.gastosGeneralesservice.getGasto().subscribe(res => {this.gastos = res;});
+    this.gastosGeneralesservice.getGasto().subscribe(res => {this.gastos = res; });
     this.crearGastoForm(this.gasto);
   }
 
@@ -61,8 +64,8 @@ export class GastosgeneralesComponent implements OnInit {
     const guardarGasto = new Gasto({
       id: formModel.id as number,
       nombre: formModel.nombre as string,
-      trabajor: formModel.apellido as string,
-      monto: formModel.telefono as string,
+      trabajo: formModel.trabajo as string,
+      monto: formModel.monto as string,
     });
     return guardarGasto;
   }
@@ -70,7 +73,7 @@ export class GastosgeneralesComponent implements OnInit {
   resetFormGasto() {
     this.gastosForm.reset({
       nombre: '',
-      trabajor: '',
+      trabajo: '',
       monto: '',
     });
   }

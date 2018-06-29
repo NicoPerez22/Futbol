@@ -8,6 +8,10 @@
           <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
           </option>
         </select>
+        <select class="form-control"   (change)="filterChanged($event.target.value)">
+          <option value="106" data-color="#A0522D" *ngFor="let type of cate" [value]="type.value">{{type.display}}
+          </option>
+        </select>
       </div>
       <br>
       <br>
@@ -74,25 +78,6 @@
           <button type="submit" class="btn btn-outline-success">Confirmar</button>
           <!-- Button trigger modal --
           <!-- Modal -->
-          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Planilla Medica</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Texto
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
-              </div>
-            </div>
-          </div>
         </form>
       </section>
       <br>
@@ -109,6 +94,7 @@
           <th scope="col">Planilla Medica</th>
           <th scope="col">Mail</th>
           <th scope="col">Pago</th>
+          <th scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th>
         </tr>
@@ -134,12 +120,15 @@
               <i class="fa fa-trash"></i>
             </button>
           </td>
+
+          <!--<td class="text-center">-->
+            <!--<button class="btn btn-warning" (click)="editJugador(i, rec?.id)">-->
+              <!--<i class="fa fa-trash"></i>-->
+            <!--</button>-->
+          <!--</td>-->
         </tr>
         </tbody>
       </table>
-      <div>
-      <h4>asdasds</h4>
-      </div>
     </div>
   </div>
 </div>

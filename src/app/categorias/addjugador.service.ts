@@ -52,6 +52,13 @@ export class AddjugadorService {
       );
 
   }
+
+  editJugador(jugador): Observable<Jugador> {
+    const url = this.APIUrl + 'pagosjugadores/' + jugador.id;
+    return this.http
+      .put<Jugador>(url, jugador)
+      .pipe(map(res => res));
+  }
 }
 
 
