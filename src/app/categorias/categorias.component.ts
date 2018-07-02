@@ -1,7 +1,7 @@
 import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
-import { AddjugadorService } from './addjugador.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Jugador } from './JugadorObj';
+import {AddjugadorService} from './addjugador.service';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Jugador} from './JugadorObj';
 import * as moment from 'moment';
 import {Router, RouterEvent, Routes} from '@angular/router';
 
@@ -20,37 +20,43 @@ export class CategoriasComponent implements OnInit {
 
   selectedFilter: string;
   public filterTypes = [
-    {value:'Enero', display:'Enero'},
-    {value:'Febrero', display:'Febrero'},
-    {value:'Marzo', display:'Marzo'},
-    {value:'Abril', display:'Abril'},
-    {value:'Mayo', display:'Mayo'},
-    {value:'Junio', display:'Junio'},
-    {value:'Julio', display:'Julio'},
-    {value:'Agosto', display:'Agosto'},
-    {value:'Septiembre', display:'Septiembre'},
-    {value:'Octubre', display:'Octubre'},
-    {value:'Noviembre', display:'Noviembre'},
-    {value:'Diciembre', display:'Diciembre'},
+    {value: 'Enero', display: 'Enero'},
+    {value: 'Febrero', display: 'Febrero'},
+    {value: 'Marzo', display: 'Marzo'},
+    {value: 'Abril', display: 'Abril'},
+    {value: 'Mayo', display: 'Mayo'},
+    {value: 'Junio', display: 'Junio'},
+    {value: 'Julio', display: 'Julio'},
+    {value: 'Agosto', display: 'Agosto'},
+    {value: 'Septiembre', display: 'Septiembre'},
+    {value: 'Octubre', display: 'Octubre'},
+    {value: 'Noviembre', display: 'Noviembre'},
+    {value: 'Diciembre', display: 'Diciembre'},
   ];
 
   public cate = [
-    {value:'Categoria 2000', display:'Categoria 2000'},
-    {value:'Categoria', display:'Categoria'},
-    {value:'Categoria', display:'Categoria'},
-    {value:'Categoria', display:'Categoria'},
-  ]
+    {value: 'Categoria 2000', display: 'Categoria 2000'},
+    {value: 'Categoria', display: 'Categoria'},
+    {value: 'Categoria', display: 'Categoria'},
+    {value: 'Categoria', display: 'Categoria'},
+  ];
+
+
+  jugadorForm;
+
+  @Input()
+  _data: Jugador;
 
   @Output()
   agreJugador: EventEmitter<Jugador> = new EventEmitter<Jugador>();
-
-  jugadorForm;
 
   constructor(private router: Router, private addjugadorService: AddjugadorService) {
   }
 
   ngOnInit() {
-    this.addjugadorService.getJugador().subscribe(res => {this.jugadores = res; });
+    this.addjugadorService.getJugador().subscribe(res => {
+      this.jugadores = res;
+    });
     this.crearJugadorForm(this.jugador);
   }
 
@@ -61,12 +67,6 @@ export class CategoriasComponent implements OnInit {
         this.jugadores.push(this.jugador);
       });
     this.resetFormJugador();
-    // this.addjugadorService.editJugador(this.jugador).subscribe(
-    //   res => this.router.navigate(['/']),
-    //   err => alert('Algo salio mal. ' +
-    //     'El formulario no puede guardarse en este momento. ' +
-    //     'Si lo desea puede dejar esta pestaña del navegador web abierta para no perder los cambios e intentar guardar mas tarde.')
-    // );
   }
 
 
@@ -76,9 +76,9 @@ export class CategoriasComponent implements OnInit {
     this.addjugadorService.deleteJugador(id).subscribe();
   }
 
-  //editJugador(j) {
-  //  this.router.navigate(['/pagosjugadores/modificar/' + j.id]);
-  //}
+  editJugador(i, id) {
+    this.router.navigate(['/pagosjugadores/modificar/', id]);
+  }
 
   prepGuardarJugador(): Jugador {
     const formModel = this.jugadorForm.value;
@@ -115,9 +115,6 @@ export class CategoriasComponent implements OnInit {
     console.log('value is ', selectedValue);
     this.addjugadorService.getJugador();
   }
-
-
-
 
 
   crearJugadorForm(jugador = new Jugador()) {

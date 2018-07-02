@@ -1,0 +1,18 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Pagos de Jugadores</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <br>
+      <br>
+      <div>
+        <i class="fa fa-table"></i> Modificar Jugador</div>
+      <br>
+      <section class="createJugador">
+        <div class="box-body agregar" *ngIf="jugador">
+          <app-categorias [_data]="jugador" (agreJugador)="onSubmitCedula($event)"></app-categorias>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

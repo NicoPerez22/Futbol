@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
 import {CategoriasComponent} from '../categorias.component';
-
 
 
 const routes: Routes = [
@@ -10,7 +9,6 @@ const routes: Routes = [
     path: '',
     component: CategoriasComponent,
     children: [
-      {path: 'modificar/:id', component: CategoriasComponent},
       {path: ':id', component: CategoriasComponent}
     ]
   }
@@ -18,8 +16,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(
+      routes
+    )
   ],
   declarations: []
 })
-export class JugadoresEditModule { }
+export class JugadoresEditModule {
+}

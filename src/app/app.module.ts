@@ -19,12 +19,12 @@ import { SponsorService } from './sponsor/sponsor.service';
     CoreModule,
     BrowserModule
   ],
-  providers: [AddjugadorService, 
+  providers: [AddjugadorService,
     MicrosService,
     GastosgeneralesService,
     TelefonoutilService,
     ArbitrosmedService,
-    SponsorService
+    SponsorService,
   ],
   bootstrap: [ShellComponent]
 })

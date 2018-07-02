@@ -4,14 +4,18 @@
   <div class="card-body">
     <div class="table-responsive">
       <div class="btn-group">
-        <select class="form-control"   (change)="filterChanged($event.target.value)">
+        <div>
+          <select class="form-control"   (change)="filterChanged($event.target.value)">
           <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
           </option>
         </select>
+        </div>
+        <div>
         <select class="form-control"   (change)="filterChanged($event.target.value)">
           <option value="106" data-color="#A0522D" *ngFor="let type of cate" [value]="type.value">{{type.display}}
           </option>
         </select>
+        </div>
       </div>
       <br>
       <br>
@@ -112,8 +116,8 @@
           <td>{{rec?.mail}}</td>
           <td>{{rec?.pago}}</td>
           <td class="text-center">
-            <button class="btn btn-warning">
-              <i class="fa fa-list-alt"></i>
+            <button class="btn btn-warning" onclick="location.href=;" value="Go to Google">
+              <i class="fa fa-th-list"></i>
             </button>
           <td class="text-center">
             <button class="btn btn-danger" (click)="deleteJugador(i, rec?.id)">
@@ -121,11 +125,11 @@
             </button>
           </td>
 
-          <!--<td class="text-center">-->
-            <!--<button class="btn btn-warning" (click)="editJugador(i, rec?.id)">-->
-              <!--<i class="fa fa-trash"></i>-->
-            <!--</button>-->
-          <!--</td>-->
+          <td class="text-center">
+            <button class="btn btn-warning" (click)="editJugador(i, rec?.id)">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </td>
         </tr>
         </tbody>
       </table>

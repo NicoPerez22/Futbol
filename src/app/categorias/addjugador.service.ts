@@ -25,7 +25,7 @@ export class AddjugadorService {
           const jugadores = [];
           res.jugadores.forEach(jug => {
             jugadores.push(new Jugador(jug));
-          })
+          });
           return jugadores;
         })
       );
@@ -33,7 +33,7 @@ export class AddjugadorService {
 
   updateJugador(jugador: Jugador): Observable<any> {
     const url = this.APIUrl + 'pagosjugadores/';
-    return this.http.put(this.APIUrl, jugador, httpOptions);
+    return this.http.put(this.APIUrl, jugador);
   }
 
   postJugador(jugador): Observable<Jugador> {
@@ -59,9 +59,13 @@ export class AddjugadorService {
       .put<Jugador>(url, jugador)
       .pipe(map(res => res));
   }
+
+  getJugador2(jugadorID: number): Observable<Jugador> {
+    const url = this.APIUrl + 'pagosjugadores/' + jugadorID;
+    return this.http.get<any>(url)
+      .pipe(
+        tap(res => console.log(res)),
+        map(res => res));
+  }
+
 }
-
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
