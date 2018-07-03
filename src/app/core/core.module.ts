@@ -28,18 +28,34 @@ import {DataTablesModule} from 'angular-datatables';
 import {HttpClientModule} from '@angular/common/http';
 import {ModificarJugadorComponent} from '../modificar-jugador/modificar-jugador.component';
 import {JugadoresEditModule} from '../categorias/jugadores-edit/jugadores-edit.module';
+import {DetalleJugadorComponent} from '../detalle-jugador/detalle-jugador.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'pagosjugadores', component: CategoriasComponent},
   {path: 'pagosjugadores/modificar/:id', component: ModificarJugadorComponent},
+  {path: 'pagosjugadores/detallejugador/:id', component: DetalleJugadorComponent},
   {path: 'gastosgenerales', component: GastosgeneralesComponent},
   {path: 'ingresopartido', component: IngresopartidoComponent},
   {path: 'arbitrosmedicos', component: ArbitrosmedicosComponent},
   {path: 'sponsors', component: SponsorComponent},
   {path: 'telefonos', component: TelefonosutilesComponent},
   {path: 'gastosmicro', component: GastomicroComponent},
+  {
+    path: '',
+    component: CategoriasComponent,
+    children: [
+      {path: ':id', component: CategoriasComponent}
+    ]
+  },
+  {
+    path: '',
+    component: CategoriasComponent,
+    children: [
+      {path: ':id', component: CategoriasComponent}
+    ]
+  }
 ];
 
 @NgModule({
@@ -54,6 +70,9 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
 
     RouterModule.forRoot(
+      appRoutes
+    ),
+    RouterModule.forChild(
       appRoutes
     ),
     JugadoresEditModule

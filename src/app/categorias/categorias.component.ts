@@ -4,6 +4,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Jugador} from './JugadorObj';
 import * as moment from 'moment';
 import {Router, RouterEvent, Routes} from '@angular/router';
+import {DetalleJugadorComponent} from '../detalle-jugador/detalle-jugador.component';
 
 
 @Component({
@@ -78,6 +79,9 @@ export class CategoriasComponent implements OnInit {
 
   editJugador(i, id) {
     this.router.navigate(['/pagosjugadores/modificar/', id]);
+  }
+  detalleJugador(i, id) {
+    this.router.navigate(['/pagosjugadores/detallejugador/', id]);
   }
 
   prepGuardarJugador(): Jugador {

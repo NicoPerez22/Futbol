@@ -1,0 +1,66 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Detalle Jugador</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <br>
+      <h4>N° Socio: 1</h4>
+      <br>
+      <h4>Categoria: 2002</h4>
+      <br>
+      <h4>Nombre: Nico</h4>
+      <br>
+      <h4>Apellido: Perez</h4>
+      <br>
+      <h4>Telefono: 6281787</h4>
+      <br>
+      <h4>Mail: adadaffd@gmail.com</h4>
+      <div>
+      <br>
+      <section class="createJugador">
+      </section>
+    </div>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Mes</th>
+          <th scope="col">Fecha de pago</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Deuda</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let rec of jugadores, let i = index;">
+          <td scope="row">{{rec?.nsocio}}</td>
+          <td>{{rec?.nombre}}</td>
+          <td>{{rec?.apellido}}</td>
+          <td>{{rec?.telefono}}</td>
+          <td>{{rec?.fechapago}}</td>
+          <td>{{rec?.observacion}}</td>
+          <td>{{rec?.planillamed}}</td>
+          <td>{{rec?.mail}}</td>
+          <td>{{rec?.pago}}</td>
+          <td class="text-center">
+            <button class="btn btn-warning" (click)="detalleJugador(i, rec?.id)">
+              <i class="fa fa-th-list"></i>
+            </button>
+          <td class="text-center">
+            <button class="btn btn-danger" (click)="deleteJugador(i, rec?.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+
+          <td class="text-center">
+            <button class="btn btn-warning" (click)="editJugador(i, rec?.id)">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+  </div>
+</div>

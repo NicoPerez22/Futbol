@@ -116,7 +116,7 @@
           <td>{{rec?.mail}}</td>
           <td>{{rec?.pago}}</td>
           <td class="text-center">
-            <button class="btn btn-warning" onclick="location.href=;" value="Go to Google">
+            <button class="btn btn-warning" (click)="detalleJugador(i, rec?.id)">
               <i class="fa fa-th-list"></i>
             </button>
           <td class="text-center">
