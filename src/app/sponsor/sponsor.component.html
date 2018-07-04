@@ -1,78 +1,73 @@
-        <!-- Breadcrumbs-->
-        <!-- Example DataTables Card-->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fa fa-table"></i> Sponsors y Subsidios</div>
-           <div class="dropdown-menu">
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <div class="btn-group">
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Mes: Enero
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Febrero</a>
-                  <a class="dropdown-item" href="#">Marzo</a>
-                  <a class="dropdown-item" href="#">Abril</a>
-                </div>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Gastos Generales</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <div class="btn-group">
+        <select class="form-control"   (change)="filterChanged($event.target.value)">
+          <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
+          </option>
+        </select>
+      </div>
+      <br>
+      <br>
+      <div><i class="fa fa-table"></i> Agregar Datos</div>
+      <br>
+      <section class="createGasto">
+        <form [formGroup]="sponsorsForm" (ngSubmit)="onSubmitSponsor()" #sponsorFormId="ngForm">
+          <div class="form-row">
+            <div class="col-6">
+              <input  for="sponsor" class="form-control" placeholder="Nombre" name="sponsor" formControlName="sponsor">
             </div>
-                <br>
-                <br>
-                 <div><i class="fa fa-table"></i> Agregar Sponsor</div>
-                 <br>
-                 <form>
-                  <div class="form-row">
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Nombre Sponsor">
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Monto Parcial">
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Monto">
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                  </div>
-                  <br>
-                   <button type="button" class="btn btn-outline-success">Confirmar</button>
-                 </form>
-                 <br>
-                 <br>
-                 <table class="table">
-                    <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Sponsor</th>
-                    <th scope="col">Monto Parcial</th>
-                    <th scope="col">Monto</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                </tfoot>
-                <tbody>
-                    <tr *ngFor="let rec of sponsors">
-                        <td>{{rec.sponsor}}</td>
-                        <td>{{rec.montoparcial}}</td>
-                        <td>{{rec.monto}}</td>
-                    </tr>
-                  </tbody>
-                </table>
+            <br>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="montoParcial" class="form-control" placeholder="Monto Parcial" name="montoParcial" formControlName="montoParcial">
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="monto" class="form-control" placeholder="Monto" name="monto" formControlName="monto">
             </div>
           </div>
-        </div>
-
-      <!-- /.container-fluid-->
-      <!-- /.content-wrapper-->
-      <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-      </a>
-      <!-- Logout Modal-->
+          <br>
+          <br>
+          <br>
+          <button type="submit" class="btn btn-outline-success">Confirmar</button>
+        </form>
+      </section>
+      <br>
+      <br>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Monto Parcial</th>
+          <th scope="col">Monto</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let spon of sponsors, let i = index;">
+          <td>{{spon?.sponsor}}</td>
+          <td>{{spon?.montoParcial}}</td>
+          <td>{{spon?.monto}}</td>
+          <td class="text-center">
+            <button class="btn btn-warning" (click)="editJugador(i, gast?.id)">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-danger" (click)="deleteGasto(i, gast?.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
