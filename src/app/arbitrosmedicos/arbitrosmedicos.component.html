@@ -1,133 +1,123 @@
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Gastos Arbitros y Medicos</div>
-        <div class="card-body">
-          <div class="table-responsive">
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mes: Enero
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Febrero</a>
-                    <a class="dropdown-item" href="#">Marzo</a>
-                    <a class="dropdown-item" href="#">Abril</a>
-                  </div>
-              </div>
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Semana: 1
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Febrero</a>
-                    <a class="dropdown-item" href="#">Marzo</a>
-                    <a class="dropdown-item" href="#">Abril</a>
-                  </div>
-              </div>
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Liga: LIFIPA
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Febrero</a>
-                    <a class="dropdown-item" href="#">Marzo</a>
-                    <a class="dropdown-item" href="#">Abril</a>
-                  </div>
-              </div>
-              <br>
-              <br>
-               <div><i class="fa fa-table"></i> Agregar Montos</div>
-               <br>
-               <form #arbitro>
-                <div class="form-row">
-                  <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Nombre">
-                  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Apellido">
-                  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Mail">
-                  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Fecha de Nacimiento">
-                  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Monto Arbitros">
-                  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Monto Medicos">
-                  </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                 <button type="button" class="btn btn-outline-success">Confirmar</button>
-               </form>
-               <br>
-               <br>
-               <table class="table">
-                  <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Apellido</th>
-                  <th scope="col">Mail</th>
-                  <th scope="col">Fecha Nacimiento</th>
-                  <th scope="col">Monto Arbitros</th>
-                  <th scope="col">Monto Medicos</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let rec of arbitros">
-                    <td>{{rec.nombre}}</td>
-                    <td>{{rec.apellido}}</td>
-                    <td>{{rec.mail}}</td>
-                    <td>{{rec.fechanacimiento}}</td>
-                    <td>{{rec.marbitros}}</td>
-                    <td>{{rec.mmedicos}}</td>
-                    </tr>
-              </tbody>
-              </table>
-          </div>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Arbitros y Medicos</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <div class="btn-group">
+        <div class="col-6">
+          <select class="form-control"   (change)="filterChanged($event.target.value)">
+            <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
+            </option>
+          </select>
         </div>
+        <div class="col-6">
+          <select class="form-control"   (change)="filterChanged($event.target.value)">
+            <option value="106" data-color="#A0522D" *ngFor="let type of cate" [value]="type.value">{{type.display}}
+            </option>
+          </select>
         </div>
-
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
+        <div class="col-6">
+          <select class="form-control"   (change)="filterChanged($event.target.value)">
+            <option value="106" data-color="#A0522D" *ngFor="let type of liga" [value]="type.value">{{type.display}}
+            </option>
+          </select>
         </div>
       </div>
+      <br>
+      <br>
+      <div>
+        <i class="fa fa-table"></i> Agregar Datos</div>
+      <br>
+      <section class="createArbitro">
+        <form [formGroup]="arbitroForm" (ngSubmit)="onSubmitArbitro()" #arbitroFormId="ngForm">
+          <div class="form-row">
+            <div class="col-6">
+              <input for="nombre" class="form-control" placeholder="Nombre" name="nombre" formControlName="nombre">
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="apellido" class="form-control" placeholder="Apellido" name="apellido" formControlName="apellido">
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="form-row">
+            <div class="col-6">
+              <input for="mail" class="form-control" placeholder="Mail" name="mail" formControlName="mail">
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="fechanacimiento" class="form-control" placeholder="Fecha de nacimiento" name="fechanacimiento" formControlName="fechanacimiento">
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="form-row">
+            <div class="col-6">
+              <input for="montoA" class="form-control" placeholder="Monto Arbitros" name="montoA" formControlName="montoA">
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="montoM" class="form-control" placeholder="Monto Medicos" name="montoM" formControlName="montoM">
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+          <br>
+          <br>
+          <button type="submit" class="btn btn-outline-success">Confirmar</button>
+          <!-- Button trigger modal --
+          <!-- Modal -->
+        </form>
+      </section>
+      <br>
+      <br>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Mail</th>
+          <th scope="col">Fecha de nacimiento</th>
+          <th scope="col">Monto Arbitros</th>
+          <th scope="col">Monto Medicos</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let am of arbitros, let i = index;">
+          <td>{{am?.nombre}}</td>
+          <td>{{am?.apellido}}</td>
+          <td>{{am?.mail}}</td>
+          <td>{{am?.fechanacimiento}}</td>
+          <td>{{am?.montoA}}</td>
+          <td>{{am?.montoM}}</td>
+          <td class="text-center">
+            <button class="btn btn-warning" (click)="detalleJugador(i, am?.id)">
+              <i class="fa fa-th-list"></i>
+            </button>
+          <td class="text-center">
+            <button class="btn btn-danger" (click)="deleteArbitro(i, am?.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+
+          <td class="text-center">
+            <button class="btn btn-warning" (click)="editJugador(i, am?.id)">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>

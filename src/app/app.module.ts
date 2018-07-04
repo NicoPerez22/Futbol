@@ -10,12 +10,12 @@ import { GastosgeneralesService } from './gastosgenerales/gastosgenerales.servic
 import { TelefonoutilService } from './telefonosutiles/telefonoutil.service';
 import { ArbitrosmedService } from './arbitrosmedicos/arbitrosmed.service';
 import { SponsorService } from './sponsor/sponsor.service';
-import { DetalleJugadorComponent } from './detalle-jugador/detalle-jugador.component';
+
 
 
 
 @NgModule({
-  declarations: [DetalleJugadorComponent],
+  declarations: [],
   imports: [
     CoreModule,
     BrowserModule

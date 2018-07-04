@@ -60,12 +60,12 @@ export class AddjugadorService {
       .pipe(map(res => res));
   }
 
-  getJugador2(jugadorID: number): Observable<Jugador> {
+  getJugador2(jugadorID: any): Observable<Jugador> {
     const url = this.APIUrl + 'pagosjugadores/' + jugadorID;
     return this.http.get<any>(url)
       .pipe(
         tap(res => console.log(res)),
-        map(res => res));
+        map(res => res.jugador));
   }
 
 }

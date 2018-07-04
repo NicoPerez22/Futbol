@@ -14,6 +14,7 @@ import {DetalleJugadorComponent} from '../detalle-jugador/detalle-jugador.compon
 })
 export class CategoriasComponent implements OnInit {
 
+  @Output()
   jugadores: Jugador[] = new Array<Jugador>();
   jugador: Jugador;
   now = moment().format('L');

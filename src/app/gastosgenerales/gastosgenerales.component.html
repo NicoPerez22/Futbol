@@ -14,7 +14,7 @@
                <div><i class="fa fa-table"></i> Agregar Datos</div>
                <br>
                <section class="createGasto">
-               <form [formGroup]="gastosForm" (ngSubmit)="onSubmitGasto()" #gastoFormId="ngForm" *ngIf="gastosForm">
+               <form [formGroup]="gastosForm" (ngSubmit)="onSubmitGasto()" #gastoFormId="ngForm">
                 <div class="form-row">
                   <div class="col-6">
                     <input  for="nombre" class="form-control" placeholder="Nombre" name="nombre" formControlName="nombre">
@@ -46,6 +46,8 @@
                   <th scope="col">Nombre</th>
                   <th scope="col">Trabajo</th>
                   <th scope="col">Monto</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -53,6 +55,11 @@
                       <td>{{gast?.nombre}}</td>
                       <td>{{gast?.trabajo}}</td>
                       <td>{{gast?.monto}}</td>
+                    <td class="text-center">
+                      <button class="btn btn-warning" (click)="editJugador(i, gast?.id)">
+                        <i class="fa fa-pencil"></i>
+                      </button>
+                    </td>
                     <td class="text-center">
                       <button class="btn btn-danger" (click)="deleteGasto(i, gast?.id)">
                         <i class="fa fa-trash"></i>

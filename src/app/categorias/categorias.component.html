@@ -4,13 +4,13 @@
   <div class="card-body">
     <div class="table-responsive">
       <div class="btn-group">
-        <div>
+        <div class="col-6">
           <select class="form-control"   (change)="filterChanged($event.target.value)">
           <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
           </option>
         </select>
         </div>
-        <div>
+        <div class="col-7">
         <select class="form-control"   (change)="filterChanged($event.target.value)">
           <option value="106" data-color="#A0522D" *ngFor="let type of cate" [value]="type.value">{{type.display}}
           </option>

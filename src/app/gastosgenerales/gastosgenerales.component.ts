@@ -35,7 +35,7 @@ export class GastosgeneralesComponent implements OnInit {
 
   gastosForm;
 
-  constructor(private gastosGeneralesservice: GastosgeneralesService) {
+  constructor(private router: Router, private gastosGeneralesservice: GastosgeneralesService) {
   }
 
   ngOnInit() {
@@ -68,6 +68,9 @@ export class GastosgeneralesComponent implements OnInit {
       monto: formModel.monto as string,
     });
     return guardarGasto;
+  }
+  editJugador(i, id) {
+    this.router.navigate(['/gastosgenerales/modificar/', id]);
   }
 
   resetFormGasto() {

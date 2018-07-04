@@ -1,19 +1,19 @@
-export class Arbitro {
-    id: any;
-    nombre: string;
-    apellido: string;
-    telefono: number;
-    mail: any;
-    fechanacimiento: number;
-    monto: number;
-}
+export class AyM {
+  public id: Number;
+  public nombre: String;
+  public apellido: String;
+  public mail: String;
+  public fechanacimiento: String;
+  public montoA: String;
+  public montoM: String;
 
-export class Medico {
-    id: any;
-    nombre: string;
-    apellido: string;
-    telefono: number;
-    mail: any;
-    fechanacimiento: number;
-    monto: number;
+  constructor(obj?: any) {
+    this.id = obj && obj._id || 0;
+    this.nombre = obj && obj.nombre || '';
+    this.apellido = obj && obj.apellido || '';
+    this.mail = obj && obj.mail || '';
+    this.fechanacimiento = obj && obj.fechanacimiento || '';
+    this.montoA = obj && obj.montoA || '';
+    this.montoM = obj && obj.montoM || '';
+  }
 }

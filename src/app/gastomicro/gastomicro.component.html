@@ -1,83 +1,88 @@
-
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Gastos de Micros</div>
-        <div class="card-body">
-          <div class="table-responsive">
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mes: Enero
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Febrero</a>
-                    <a class="dropdown-item" href="#">Marzo</a>
-                    <a class="dropdown-item" href="#">Abril</a>
-                  </div>
-              </div>
-              <br>
-              <br>
-               <div><i class="fa fa-table"></i> Agregar Gasto Micro</div>
-               <br>
-               <form class="form-header">
-                <div class="form-row">
-                  <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Destino">
-                  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Monto">
-                  </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                 <button type="button" class="btn btn-outline-success">Confirmar</button>
-               </form>
-               <br>
-               <br>
-               <br>
-               <table class="table">
-                  <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Destino</th>
-                  <th scope="col">Monto</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let micro of micros">
-                      <td scope="row">{{micro.destino}}</td>
-                      <td>{{micro.monto}}</td>
-                    </tr>
-                </tbody>
-              </table>
-          </div>
-        </div>
-        </div>
-      
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Gastos de Micros</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <div class="btn-group">
+        <div>
+          <select class="form-control"   (change)="filterChanged($event.target.value)">
+            <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
+            </option>
+          </select>
         </div>
       </div>
+      <br>
+      <br>
+      <div>
+        <i class="fa fa-table"></i> Agregar Viaje</div>
+      <br>
+      <section class="createJugador">
+        <form [formGroup]="microForm" (ngSubmit)="onSubmitMicro()" #microFormId="ngForm">
+          <div class="form-row">
+            <div class="col-6">
+              <input  for="destino" class="form-control" placeholder="Destino" name="destino" formControlName="destino">
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="empresa" class="form-control" placeholder="Empresa" name="empresa" formControlName="empresa">
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="form-row">
+            <div class="col-6">
+              <input for="nmicro" class="form-control" placeholder="Mmicro" name="nmicro" formControlName="nmicro">
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="monto" class="form-control" placeholder="Monto" name="monto" formControlName="monto">
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <button type="submit" class="btn btn-outline-success">Confirmar</button>
+          <!-- Button trigger modal --
+          <!-- Modal -->
+        </form>
+      </section>
+      <br>
+      <br>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Destino</th>
+          <th scope="col">Empresa</th>
+          <th scope="col">Mmicro</th>
+          <th scope="col">Monto</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let rec of micros, let i = index;">
+          <td scope="row">{{rec?.destino}}</td>
+          <td>{{rec?.empresa}}</td>
+          <td>{{rec?.nmicro}}</td>
+          <td>{{rec?.monto}}</td>
+          <td class="text-center">
+            <button class="btn btn-danger" (click)="deleteMicro(i, rec?.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+
+          <td class="text-center">
+            <button class="btn btn-warning" (click)="editMicro(i, rec?.id)">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>

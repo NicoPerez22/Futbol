@@ -4,17 +4,17 @@
   <div class="card-body">
     <div class="table-responsive">
       <br>
-      <h4>N° Socio: 1</h4>
+      <h4>N° Socio: {{jugador?.nsocio}}</h4>
       <br>
       <h4>Categoria: 2002</h4>
       <br>
-      <h4>Nombre: Nico</h4>
+      <h4>Nombre: {{jugador?.nombre}}</h4>
       <br>
-      <h4>Apellido: Perez</h4>
+      <h4>Apellido: {{jugador?.apellido}}</h4>
       <br>
-      <h4>Telefono: 6281787</h4>
+      <h4>Telefono: {{jugador?.telefono}}</h4>
       <br>
-      <h4>Mail: adadaffd@gmail.com</h4>
+      <h4>Mail: {{jugador?.mail}}</h4>
       <div>
       <br>
       <section class="createJugador">
@@ -27,38 +27,14 @@
           <th scope="col">Fecha de pago</th>
           <th scope="col">Monto</th>
           <th scope="col">Deuda</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-
-        <tr *ngFor="let rec of jugadores, let i = index;">
-          <td scope="row">{{rec?.nsocio}}</td>
-          <td>{{rec?.nombre}}</td>
-          <td>{{rec?.apellido}}</td>
-          <td>{{rec?.telefono}}</td>
-          <td>{{rec?.fechapago}}</td>
-          <td>{{rec?.observacion}}</td>
-          <td>{{rec?.planillamed}}</td>
-          <td>{{rec?.mail}}</td>
-          <td>{{rec?.pago}}</td>
-          <td class="text-center">
-            <button class="btn btn-warning" (click)="detalleJugador(i, rec?.id)">
-              <i class="fa fa-th-list"></i>
-            </button>
-          <td class="text-center">
-            <button class="btn btn-danger" (click)="deleteJugador(i, rec?.id)">
-              <i class="fa fa-trash"></i>
-            </button>
-          </td>
-
-          <td class="text-center">
-            <button class="btn btn-warning" (click)="editJugador(i, rec?.id)">
-              <i class="fa fa-pencil"></i>
-            </button>
-          </td>
+        <tr>
+          <td><i>Enero</i></td>
+          <td>{{jugador?.fechapago}}</td>
+          <td>{{jugador?.pago}}</td>
+          <td>{{jugador?.pago}}</td>
         </tr>
         </tbody>
       </table>

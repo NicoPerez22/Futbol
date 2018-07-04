@@ -7,7 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { environment } from '../../environments/environment';
 import { Gasto } from './gastosObj';
-import {Jugador} from '../categorias/JugadorObj';
+
 
 @Injectable()
 export class GastosgeneralesService {
@@ -19,11 +19,10 @@ export class GastosgeneralesService {
 
   getGasto(): Observable<Gasto[]> {
     const url = this.APIUrl + 'gastosgenerales/';
-    return this.http
-      .get<any>(url)
+    return this.http.get<any>(url)
       .pipe(
         tap(res => console.log(res)),
-        map(res => res.data));
+        map(res => res.Gasto));
   }
 
   postGasto(gasto): Observable<Gasto> {

@@ -6,30 +6,36 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
 import { environment } from '../../environments/environment';
-import { Arbitro, Medico } from './arbimedObj';
+import {AyM} from './arbimedObj';
 
 @Injectable()
 export class ArbitrosmedService {
 
-  arbitroL: Arbitro;
-  medicoL: Medico;
   APIUrl = environment.API_URL;
 
   constructor(private http: HttpClient) { }
 
-  getArbitro(): Observable<Arbitro[]> {
+  getArbitro(): Observable<AyM[]> {
     const url = this.APIUrl + 'arbitrosmedicos/';
     return this.http.get<any>(url)
     .pipe(
-        map(res => res.data)
-    );
+        tap(res => console.log(res)),
+        map(res => res.AyM));
+  }
+  postArbitro(arbitro): Observable<AyM> {
+    const url = this.APIUrl + 'arbitrosmedicos/';
+    return this.http
+      .post<AyM>(url, arbitro)
+      .pipe(map(res => res));
   }
 
-  getMedico(): Observable<Medico[]> {
-    const url = this.APIUrl + 'arbitrosmedicos/';
-    return this.http.get<any>(url)
-    .pipe(
-        map(res => res.data)
-    );
+  deleteArbitro(arbitroId: number): Observable<AyM> {
+    const url = this.APIUrl + 'arbitrosmedicos/' + arbitroId;
+    return this.http.delete<AyM>(url)
+      .pipe(
+        tap(res => console.log(res)),
+        map(res => res)
+      );
+
   }
 }
