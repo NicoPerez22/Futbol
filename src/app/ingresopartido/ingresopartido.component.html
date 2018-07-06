@@ -3,98 +3,116 @@
           <i class="fa fa-table"></i> Ingresos de Partidos - Sabados</div>
         <div class="card-body">
           <div class="table-responsive">
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mes: Enero
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Febrero</a>
-                    <a class="dropdown-item" href="#">Marzo</a>
-                    <a class="dropdown-item" href="#">Abril</a>
-                  </div>
+            <div class="btn-group">
+              <div class="col-6">
+                <select class="form-control"   (change)="filterChanged($event.target.value)">
+                  <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
+                  </option>
+                </select>
               </div>
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Semana: 1
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Febrero</a>
-                    <a class="dropdown-item" href="#">Marzo</a>
-                    <a class="dropdown-item" href="#">Abril</a>
-                  </div>
+              <div class="col-6">
+                <select class="form-control"   (change)="filterChanged($event.target.value)">
+                  <option value="106" data-color="#A0522D" *ngFor="let type of cate" [value]="type.value">{{type.display}}
+                  </option>
+                </select>
               </div>
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Liga: LIFIPA
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Febrero</a>
-                    <a class="dropdown-item" href="#">Marzo</a>
-                    <a class="dropdown-item" href="#">Abril</a>
-                  </div>
+              <div class="col-6">
+                <select class="form-control"   (change)="filterChanged($event.target.value)">
+                  <option value="106" data-color="#A0522D" *ngFor="let type of liga" [value]="type.value">{{type.display}}
+                  </option>
+                </select>
               </div>
+            </div>
               <br>
               <br>
                <div><i class="fa fa-table"></i> Agregar Montos</div>
                <br>
-               <form #ingresossabados>
+            <section class="createIngresoSabados">
+              <form [formGroup]="ingresoSabadoForm" (ngSubmit)="onSubmitIngresoSabados()" #ingresoSabadosFormId="ngForm">
                 <div class="form-row">
                   <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Estacionamiento Monto">
+                    <input for="estacionamiento" class="form-control" placeholder="Estacionamiento" name="estacionamiento" formControlName="estacionamiento">
                   </div>
                   <br>
                   <br>
-                  <br>
                   <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Entradas Monto">
+                    <input for="entradas" class="form-control" placeholder="Entradas" name="entradas" formControlName="entradas">
                   </div>
                 </div>
                 <br>
                 <br>
-                 <button type="button" class="btn btn-outline-success">Confirmar</button>
-               </form>
+                <div class="form-row">
+                  <div class="col-6">
+                    <input for="buffet" class="form-control" placeholder="Buffet" name="buffet" formControlName="buffet">
+                  </div>
+                  <br>
+                  <br>
+                  <div class="col-6">
+                    <input for="taquillero" class="form-control" placeholder="Taquillero" name="taquillero" formControlName="taquillero">
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-row">
+                  <div class="col-6">
+                    <input for="montoArbitros" class="form-control" placeholder="Monto Arbitros" name="montoArbitros" formControlName="montoArbitros">
+                  </div>
+                  <br>
+                  <br>
+                  <div class="col-6">
+                    <input for="montoMedicos" class="form-control" placeholder="Monto Medicos" name="montoMedicos" formControlName="montoMedicos">
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-outline-success">Confirmar</button>
+                <!-- Button trigger modal --
+                <!-- Modal -->
+              </form>
+            </section>
                <br>
                <br>
-               <table class="table">
-                  <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Estacionamiento Monto</th>
-                  <th scope="col">Entradas Monto</th>
-                </tr>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">Estacionamiento</th>
+                <th scope="col">Entradas</th>
+                <th scope="col">Buffet</th>
+                <th scope="col">Taquillero</th>
+                <th scope="col">Monto Arbitros</th>
+                <th scope="col">Monto Medicos</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
               </thead>
-              <tfoot>
-              </tfoot>
               <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                      </tr>
-                      <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                        </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">Total</th>
-                      <td>5.000</td>
-                    </tr>
-                </tbody>
-              </table>
+
+              <tr *ngFor="let gato of ingresosS, let i = index;">
+                <td>{{gato?.estacionamiento}}</td>
+                <td>{{gato?.entradas}}</td>
+                <td>{{gato?.buffet}}</td>
+                <td>{{gato?.taquillero}}</td>
+                <td>{{gato?.montoArbitros}}</td>
+                <td>{{gato?.montoMedicos}}</td>
+                <td class="text-center">
+                  <button class="btn btn-danger" (click)="deleteIngresoSabados(i, gato?.id)">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+
+                <td class="text-center">
+                  <button class="btn btn-warning" (click)="editIngresoSabadosr(i, gato?.id)">
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <br>
@@ -127,124 +145,151 @@
     <br>
     <br>
     <br>
-    <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Ingresos de Partidos - Domingos</div>
-        <div class="card-body">
-          <div class="table-responsive">
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mes: Enero
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Febrero</a></li>
-                    <li><a href="#">Febrero</a></li>
-                    <li><a href="#">Febrero</a></li>
-                  </ul>
-              </div>
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Semana: 1
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Febrero</a>
-                    <a class="dropdown-item" href="#">Marzo</a>
-                    <a class="dropdown-item" href="#">Abril</a>
-                  </div>
-              </div>
-              <div class="btn-group">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Liga: LIFIPA
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Febrero</a>
-                    <a class="dropdown-item" href="#">Marzo</a>
-                    <a class="dropdown-item" href="#">Abril</a>
-                  </div>
-              </div>
-              <br>
-              <br>
-               <div><i class="fa fa-table"></i> Agregar Montos</div>
-               <br>
-               <form class="form-header" action="/action_page.php">
-                  <label for="nombre">Estacionamiento</label>
-                  <input type="nombre" class="form-control" id="Estacionamiento">
-                  <label for="apellido">Entradas</label>
-                  <input type="nombre" class="form-control" id="Entradas">
-                  <div class="form-check">
-                  </div>
-                 <div class="form-check">
-                 </div>
-                 <button type="button" class="btn btn-outline-success">Confirmar</button>
-               </form>
-               <br>
-               <br>
-               <table class="table">
-                  <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Estacionamiento</th>
-                  <th scope="col">Entradas</th>
-                </tr>
-              </thead>
-              <tfoot>
-              </tfoot>
-              <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                      </tr>
-                      <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                        </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">Total</th>
-                      <td>5.000</td>
-                    </tr>
-                </tbody>
-              </table>
-          </div>
-        </div>
-        <br>
-        <br>
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fa fa-bar-chart"></i> Estadisticas de Ingresos por Partidos - Domingos</div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-8 my-auto">
-                <app-chart2></app-chart2>
-              </div>
-              <div class="col-sm-4 text-center my-auto">
-                <div class="h4 mb-0 text-danger">$34,693</div>
-                <div class="small text-muted">Estacionamiento</div>
-                <hr>
-                <div class="h4 mb-0 text-info">$18,474</div>
-                <div class="small text-muted">Entradas</div>
-                <hr>
-                <div class="h4 mb-0 text-warning">$16,219</div>
-                <div class="small text-muted">Total</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+    <!--<div class="card mb-3">-->
+        <!--<div class="card-header">-->
+          <!--<i class="fa fa-table"></i> Ingresos de Partidos - Domingos</div>-->
+        <!--<div class="card-body">-->
+          <!--<div class="table-responsive">-->
+            <!--<div class="btn-group">-->
+              <!--<div class="col-6">-->
+                <!--<select class="form-control"   (change)="filterChanged($event.target.value)">-->
+                  <!--<option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}-->
+                  <!--</option>-->
+                <!--</select>-->
+              <!--</div>-->
+              <!--<div class="col-6">-->
+                <!--<select class="form-control"   (change)="filterChanged($event.target.value)">-->
+                  <!--<option value="106" data-color="#A0522D" *ngFor="let type of cate" [value]="type.value">{{type.display}}-->
+                  <!--</option>-->
+                <!--</select>-->
+              <!--</div>-->
+              <!--<div class="col-6">-->
+                <!--<select class="form-control"   (change)="filterChanged($event.target.value)">-->
+                  <!--<option value="106" data-color="#A0522D" *ngFor="let type of liga" [value]="type.value">{{type.display}}-->
+                  <!--</option>-->
+                <!--</select>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<br>-->
+            <!--<br>-->
+            <!--<div><i class="fa fa-table"></i> Agregar Montos</div>-->
+            <!--<br>-->
+            <!--<section class="createArbitro">-->
+              <!--<form [formGroup]="arbitroForm" (ngSubmit)="onSubmitArbitro()" #arbitroFormId="ngForm">-->
+                <!--<div class="form-row">-->
+                  <!--<div class="col-6">-->
+                    <!--<input for="nombre" class="form-control" placeholder="Estacionamiento" name="nombre" formControlName="nombre">-->
+                  <!--</div>-->
+                  <!--<br>-->
+                  <!--<br>-->
+                  <!--<div class="col-6">-->
+                    <!--<input for="apellido" class="form-control" placeholder="Entradas" name="apellido" formControlName="apellido">-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<br>-->
+                <!--<br>-->
+                <!--<div class="form-row">-->
+                  <!--<div class="col-6">-->
+                    <!--<input for="mail" class="form-control" placeholder="Buffet" name="mail" formControlName="mail">-->
+                  <!--</div>-->
+                  <!--<br>-->
+                  <!--<br>-->
+                  <!--<div class="col-6">-->
+                    <!--<input for="fechanacimiento" class="form-control" placeholder="Taquillero" name="fechanacimiento" formControlName="fechanacimiento">-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<br>-->
+                <!--<br>-->
+                <!--<div class="form-row">-->
+                  <!--<div class="col-6">-->
+                    <!--<input for="montoA" class="form-control" placeholder="Monto Arbitros" name="montoA" formControlName="montoA">-->
+                  <!--</div>-->
+                  <!--<br>-->
+                  <!--<br>-->
+                  <!--<div class="col-6">-->
+                    <!--<input for="montoM" class="form-control" placeholder="Monto Medicos" name="montoM" formControlName="montoM">-->
+                  <!--</div>-->
+                  <!--<br>-->
+                  <!--<br>-->
+                  <!--<br>-->
+                  <!--<br>-->
+                <!--</div>-->
+                <!--<br>-->
+                <!--<br>-->
+                <!--<button type="submit" class="btn btn-outline-success">Confirmar</button>-->
+                <!--&lt;!&ndash; Button trigger modal &#45;&#45;-->
+                <!--&lt;!&ndash; Modal &ndash;&gt;-->
+              <!--</form>-->
+            <!--</section>-->
+            <!--<br>-->
+            <!--<br>-->
+            <!--<table class="table table-striped">-->
+              <!--<thead class="thead-dark">-->
+              <!--<tr>-->
+                <!--<th scope="col">Estacionamiento</th>-->
+                <!--<th scope="col">Entradas</th>-->
+                <!--<th scope="col">Buffet</th>-->
+                <!--<th scope="col">Taquillero</th>-->
+                <!--<th scope="col">Monto Arbitros</th>-->
+                <!--<th scope="col">Monto Medicos</th>-->
+                <!--<th scope="col"></th>-->
+                <!--<th scope="col"></th>-->
+                <!--<th scope="col"></th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <!--<tbody>-->
+
+              <!--<tr *ngFor="let gato of arbitros, let i = index;">-->
+                <!--<td>{{gato?.nombre}}</td>-->
+                <!--<td>{{gato?.apellido}}</td>-->
+                <!--<td>{{gato?.mail}}</td>-->
+                <!--<td>{{gato?.fechanacimiento}}</td>-->
+                <!--<td>{{gato?.montoA}}</td>-->
+                <!--<td>{{gato?.montoM}}</td>-->
+                <!--<td class="text-center">-->
+                  <!--<button class="btn btn-danger" (click)="deleteArbitro(i, gato?.id)">-->
+                    <!--<i class="fa fa-trash"></i>-->
+                  <!--</button>-->
+                <!--</td>-->
+
+                <!--<td class="text-center">-->
+                  <!--<button class="btn btn-warning" (click)="editJugador(i, gato?.id)">-->
+                    <!--<i class="fa fa-pencil"></i>-->
+                  <!--</button>-->
+                <!--</td>-->
+              <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<br>-->
+        <!--<br>-->
+        <!--<div class="card mb-3">-->
+          <!--<div class="card-header">-->
+            <!--<i class="fa fa-bar-chart"></i> Estadisticas de Ingresos por Partidos - Domingos</div>-->
+          <!--<div class="card-body">-->
+            <!--<div class="row">-->
+              <!--<div class="col-sm-8 my-auto">-->
+                <!--<app-chart2></app-chart2>-->
+              <!--</div>-->
+              <!--<div class="col-sm-4 text-center my-auto">-->
+                <!--<div class="h4 mb-0 text-danger">$34,693</div>-->
+                <!--<div class="small text-muted">Estacionamiento</div>-->
+                <!--<hr>-->
+                <!--<div class="h4 mb-0 text-info">$18,474</div>-->
+                <!--<div class="small text-muted">Entradas</div>-->
+                <!--<hr>-->
+                <!--<div class="h4 mb-0 text-warning">$16,219</div>-->
+                <!--<div class="small text-muted">Total</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
 
