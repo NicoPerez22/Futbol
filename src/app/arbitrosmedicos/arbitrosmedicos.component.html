@@ -93,25 +93,21 @@
         </thead>
         <tbody>
 
-        <tr *ngFor="let am of arbitros, let i = index;">
-          <td>{{am?.nombre}}</td>
-          <td>{{am?.apellido}}</td>
-          <td>{{am?.mail}}</td>
-          <td>{{am?.fechanacimiento}}</td>
-          <td>{{am?.montoA}}</td>
-          <td>{{am?.montoM}}</td>
+        <tr *ngFor="let gato of arbitros, let i = index;">
+          <td>{{gato?.nombre}}</td>
+          <td>{{gato?.apellido}}</td>
+          <td>{{gato?.mail}}</td>
+          <td>{{gato?.fechanacimiento}}</td>
+          <td>{{gato?.montoA}}</td>
+          <td>{{gato?.montoM}}</td>
           <td class="text-center">
-            <button class="btn btn-warning" (click)="detalleJugador(i, am?.id)">
-              <i class="fa fa-th-list"></i>
-            </button>
-          <td class="text-center">
-            <button class="btn btn-danger" (click)="deleteArbitro(i, am?.id)">
+            <button class="btn btn-danger" (click)="deleteArbitro(i, gato?.id)">
               <i class="fa fa-trash"></i>
             </button>
           </td>
 
           <td class="text-center">
-            <button class="btn btn-warning" (click)="editJugador(i, am?.id)">
+            <button class="btn btn-warning" (click)="editJugador(i, gato?.id)">
               <i class="fa fa-pencil"></i>
             </button>
           </td>

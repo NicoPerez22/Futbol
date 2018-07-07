@@ -1,100 +1,92 @@
-        <!-- Breadcrumbs-->
-        <!-- Example DataTables Card-->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fa fa-table"></i> Telefonos Utiles</div>
-          <div class="card-body">
-            <div class="table-responsive">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Mes: Enero
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Febrero</a>
-                      <a class="dropdown-item" href="#">Marzo</a>
-                      <a class="dropdown-item" href="#">Abril</a>
-                    </div>
-                </div>
-                <br>
-                <br>
-                 <div><i class="fa fa-table"></i> Agregar Datos</div>
-                 <br>
-                 <form #telefonos>
-                  <div class="form-row">
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Nombre">
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Profesion">
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Club">
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="col-6">
-                      <input type="text" class="form-control" placeholder="Telefono">
-                    </div>
-                  </div>
-                  <br>
-                  <br>
-                   <button type="button" class="btn btn-outline-success">Confirmar</button>
-                 </form>
-                 <br>
-                 <br>
-                 <table class="table">
-                    <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Profesion</th>
-                    <th scope="col">Club</th>
-                    <th scope="col">Telefono</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                </tfoot>
-                <tbody>
-                    <tr *ngFor="let rec of gatos">
-                        <td>{{rec.nombre}}</td>
-                        <td>{{rec.apellido}}</td>
-                        <td>{{rec.profesion}}</td>
-                        <td>{{rec.club}}</td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-                        <td>{{rec.telef}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
-          </div>
-        </div>
-      <!-- /.container-fluid-->
-      <!-- /.content-wrapper-->
-      <!-- Scroll to Top Button-->
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-      </a>
-      <!-- Logout Modal-->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
-          </div>
-        </div>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Telefonos Utiles</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <div class="btn-group">
+        <select class="form-control"   (change)="filterChanged($event.target.value)">
+          <option value="106" data-color="#A0522D" *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
+          </option>
+        </select>
       </div>
+      <br>
+      <br>
+      <div><i class="fa fa-table"></i> Agregar Datos</div>
+      <br>
+      <section class="createTelefono">
+        <form [formGroup]="telefonoForm" (ngSubmit)="onSubmitTelefono()" #telefonoFormId="ngForm">
+          <div class="form-row">
+            <div class="col-6">
+              <input  for="nombre" class="form-control" placeholder="Nombre" name="nombre" formControlName="nombre">
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="apellido" class="form-control" placeholder="Apellido" name="apellido" formControlName="apellido">
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="profesion" class="form-control" placeholder="Profesion" name="profesion" formControlName="profesion">
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="club" class="form-control" placeholder="Club" name="club" formControlName="club">
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="col-6">
+              <input for="telefono" class="form-control" placeholder="Telefono" name="telefono" formControlName="telefono">
+            </div>
+            <br>
+            <br>
+            <br>
+          </div>
+          <br>
+          <br>
+          <br>
+          <button type="submit" class="btn btn-outline-success">Confirmar</button>
+        </form>
+      </section>
+      <br>
+      <br>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Profesion</th>
+          <th scope="col">Club</th>
+          <th scope="col">Telefono</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let tel of telefonos, let i = index;">
+          <td>{{tel?.nombre}}</td>
+          <td>{{tel?.apellido}}</td>
+          <td>{{tel?.profesion}}</td>
+          <td>{{tel?.club}}</td>
+          <td>{{tel?.telefono}}</td>
+          <td class="text-center">
+            <button class="btn btn-warning" (click)="editTelefono(i, tel?.id)">
+              <i class="fa fa-pencil"></i>
+            </button>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-danger" (click)="deleteTelefono(i, tel?.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,14 @@
 export class Telefono {
+<<<<<<< HEAD
     id: any;
+=======
+    id: number;
+>>>>>>> eddabadaafea51380f494ce21af25ed946e1608b
     nombre: string;
     apellido: string;
     profesion: string;
     club: string;
-    telefono: number;
+    telefono: string;
 
   constructor(obj?: any) {
     this.id = obj && obj._id || 0;

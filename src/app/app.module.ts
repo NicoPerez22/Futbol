@@ -10,6 +10,7 @@ import { GastosgeneralesService } from './gastosgenerales/gastosgenerales.servic
 import { TelefonoutilService } from './telefonosutiles/telefonoutil.service';
 import { ArbitrosmedService } from './arbitrosmedicos/arbitrosmed.service';
 import { SponsorService } from './sponsor/sponsor.service';
+import {IngresospartidoService} from './ingresopartido/ingresospartido.service';
 
 
 
@@ -26,6 +27,7 @@ import { SponsorService } from './sponsor/sponsor.service';
     TelefonoutilService,
     ArbitrosmedService,
     SponsorService,
+    IngresospartidoService,
   ],
   bootstrap: [ShellComponent]
 })
